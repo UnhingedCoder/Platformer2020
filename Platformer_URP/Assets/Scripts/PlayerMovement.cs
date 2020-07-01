@@ -9,8 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 40f;
     public float dir = 1f;
     float horizontalMove = 0f;
-    bool jump = false;
-    bool crouch = false;
+    bool m_jump = false;
 
     // Update is called once per frame
     void Update()
@@ -22,15 +21,15 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            jump = true;
+            Jump();
         }
     }
 
     void FixedUpdate()
     {
         // Move our character
-        controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
-        jump = false;
+        controller.Move(horizontalMove * Time.fixedDeltaTime, m_jump);
+        m_jump = false;
     }
 
     public void ChangeDirection()
@@ -42,5 +41,10 @@ public class PlayerMovement : MonoBehaviour
     public void FaceTowardsDirection(float newDir)
     {
         dir = newDir;
+    }
+
+    public void Jump()
+    {
+        m_jump = true;
     }
 }

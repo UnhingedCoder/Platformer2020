@@ -23,7 +23,7 @@ public class SwipeDetector : MonoBehaviour
 
         foreach (Touch touch in Input.touches)
         {
-            Debug.Log("ScreenWidth Mid" + Screen.width / 2 + "\nTouch Pos:" + touch.position.x);
+            //Limit touch to half of screen
             if (touch.position.x > (Screen.width / 2))
                 return;
 
