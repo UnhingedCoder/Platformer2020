@@ -19,8 +19,6 @@ public class CharacterController2D : MonoBehaviour
     private bool m_FacingRight = true;
     private Vector3 velocity = Vector3.zero;
 
-	[SerializeField]UnityEvent e_HitAWall;
-
     private void Awake()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -29,8 +27,6 @@ public class CharacterController2D : MonoBehaviour
 	private void FixedUpdate()
 	{
 		m_Grounded = false;
-		Vector2 dir = Vector2.right;
-
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
 		// This can be done using layers instead but Sample Assets will not overwrite your project settings.
 		Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
@@ -39,20 +35,7 @@ public class CharacterController2D : MonoBehaviour
 			if (colliders[i].gameObject != gameObject)
 				m_Grounded = true;
 		}
-
-		if (!m_FacingRight)
-			dir = Vector2.left;
-
-		// Cast a ray forward.
-		RaycastHit2D hit = Physics2D.Raycast(m_WallCheck.position, dir, m_WallRadius);
-
-		// If it hits something, change directions
-		if (hit.collider != null)
-		{
-			Debug.Log(hit.collider.gameObject.name + " in front");
-			e_HitAWall.Invoke();
-		}
-	}
+    }
 
 	public void Move(float move, bool jump)
 	{
