@@ -47,4 +47,9 @@ public class PlayerMovement : MonoBehaviour
     {
         m_jump = true;
     }
+
+    public void Stop()
+    {
+        dir = 0;
+    }
 }

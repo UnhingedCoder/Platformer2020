@@ -1,19 +1,7 @@
 fileFormatVersion: 2
-guid: bd46d78766b654cf0a5031867753089d
+guid: 4cb3dd4a90e370c49bb4a1023e3f8903
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: -2546095256480609237
-    second: SPR_ATL_GROUND_0
-  - first:
-      213: 7582661456505292804
-    second: SPR_ATL_GROUND_1
-  - first:
-      213: -6277488303941622926
-    second: SPR_ATL_GROUND_2
-  - first:
-      213: -9011877551549250998
-    second: SPR_ATL_GROUND_3
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -44,7 +32,7 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: 1
+    aniso: 2
     mipBias: -100
     wrapU: 1
     wrapV: 1
@@ -52,10 +40,10 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
+  alignment: 4
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
@@ -133,115 +121,11 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: SPR_ATL_GROUND_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: 0}
-        - {x: 16, y: 0}
-        - {x: 16, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: b2c8a21aad37aacd0800000000000000
-      internalID: -2546095256480609237
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SPR_ATL_GROUND_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: 16}
-        - {x: 1, y: 16}
-        - {x: 1, y: 0}
-        - {x: 16, y: 0}
-        - {x: 16, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4084b078b660b3960800000000000000
-      internalID: 7582661456505292804
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SPR_ATL_GROUND_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: -16}
-        - {x: -16, y: 0}
-        - {x: -1, y: 0}
-        - {x: -1, y: 16}
-        - {x: 16, y: 16}
-        - {x: 16, y: -16}
-      tessellationDetail: 0
-      bones: []
-      spriteID: 273e3e9a5a1e1e8a0800000000000000
-      internalID: -6277488303941622926
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SPR_ATL_GROUND_3
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape:
-      - - {x: -16, y: 6}
-        - {x: -16, y: 16}
-        - {x: 16, y: 16}
-        - {x: 16, y: 6}
-      tessellationDetail: 0
-      bones: []
-      spriteID: a4207942d116fe280800000000000000
-      internalID: -9011877551549250998
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 45c03ae970f7441519e2160e65b99a7a
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 

@@ -19,6 +19,8 @@ public class CharacterController2D : MonoBehaviour
     private bool m_FacingRight = true;
     private Vector3 velocity = Vector3.zero;
 
+    public bool Grounded { get => m_Grounded;}
+
     private void Awake()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
