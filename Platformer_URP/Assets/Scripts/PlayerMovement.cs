@@ -66,4 +66,5 @@ public class PlayerMovement : MonoBehaviour
             dir = dirBeforeStop;
         }
     }
+
 }

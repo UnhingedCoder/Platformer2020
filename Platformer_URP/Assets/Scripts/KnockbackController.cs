@@ -29,6 +29,13 @@ public class KnockbackController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            _playerMovement.Stop();
+            _playerMovement.controller.KnockbackCount = knockbackDuration;
+
+            if (collision.transform.position.x < transform.position.x)
+                _playerMovement.controller.KnockFromRight = true;
+            else
+                _playerMovement.controller.KnockFromRight = false;
         }
     }
 }
