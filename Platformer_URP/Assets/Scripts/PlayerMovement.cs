@@ -8,8 +8,14 @@ public class PlayerMovement : MonoBehaviour
 
     public float runSpeed = 40f;
     public float dir = 1f;
+    float dirBeforeStop = 1f;
     float horizontalMove = 0f;
     bool m_jump = false;
+
+    private void Start()
+    {
+        dir = 0;
+    }
 
     // Update is called once per frame
     void Update()
@@ -50,6 +56,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void Stop()
     {
-        dir = 0;
+        if (dir != 0)
+        {
+            dirBeforeStop = dir;
+            dir = 0;
+        }
+        else
+        {
+            dir = dirBeforeStop;
+        }
     }
 }

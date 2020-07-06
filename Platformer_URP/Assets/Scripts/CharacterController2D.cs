@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class CharacterController2D : MonoBehaviour
 {
     [SerializeField] private float m_JumpForce = 400f;
+    [SerializeField] private float m_DoubleJumpForce = 400f;
     [Range(0, 0.3f)] [SerializeField] private float m_MovementSmoothing = 0.05f;
 	[Range(0, 0.5f)] [SerializeField] private float m_WallRadius = 0.2f;
 	[SerializeField] private bool m_AirControl = false;
@@ -15,6 +16,7 @@ public class CharacterController2D : MonoBehaviour
 
     const float k_GroundedRadius = 0.2f;
     private bool m_Grounded;
+    private bool m_CanDoubleJump = false;
     private Rigidbody2D m_Rigidbody2D;
     private bool m_FacingRight = true;
     private Vector3 velocity = Vector3.zero;
@@ -62,14 +64,27 @@ public class CharacterController2D : MonoBehaviour
 				// ... flip the player.
 				Flip();
 			}
-		}
-		// If the player should jump...
-		if (m_Grounded && jump)
-		{
-			// Add a vertical force to the player.
-			m_Grounded = false;
-			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
-		}
+        }
+
+
+        // If the player should jump...
+        if (jump)
+        {
+            if (m_Grounded)
+            {
+                m_Rigidbody2D.AddForce(new Vector2(m_Rigidbody2D.velocity.x / 4, m_JumpForce));
+                m_CanDoubleJump = true;
+            }
+            else
+            {
+                if (m_CanDoubleJump)
+                {
+                    m_CanDoubleJump = false;
+                    m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
+                    m_Rigidbody2D.AddForce(new Vector2(m_Rigidbody2D.velocity.x, m_DoubleJumpForce));
+                }
+            }
+        }
 	}
 
 
@@ -83,4 +98,14 @@ public class CharacterController2D : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
+    public bool IsStationary()
+    {
+        if (m_Rigidbody2D.velocity.x == 0)
+            return true;
+        else
+            return false;
+    }
+
+
 }
