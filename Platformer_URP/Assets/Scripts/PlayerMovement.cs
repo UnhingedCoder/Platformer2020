@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController2D controller;
-
+    public DynamicJoystick joystick;
     public float runSpeed = 40f;
     public float dir = 1f;
     float dirBeforeStop = 1f;
@@ -20,8 +20,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxisRaw("Horizontal") != 0)
+#if UNITY_EDITOR
+        //if (Input.GetAxisRaw("Horizontal") != 0)
             dir = Input.GetAxisRaw("Horizontal");
+
+#elif UNITY_ANDROID
+        //if (joystick.Horizontal != 0)
+            dir = joystick.Horizontal;
+#endif
 
         horizontalMove = dir * runSpeed;
 
