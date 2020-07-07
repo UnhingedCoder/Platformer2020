@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class UnitController : MonoBehaviour
 {
+    public float totalHealth;
+    public float currentHealth;
+
     private void Awake()
     {
     }
@@ -11,12 +14,17 @@ public class UnitController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        currentHealth = totalHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
+    }
+
+    public void TakeDamage(float dmg)
+    {
+        currentHealth -= dmg;
     }
 
 }

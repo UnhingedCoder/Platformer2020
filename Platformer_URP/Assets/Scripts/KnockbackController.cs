@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class KnockbackController : MonoBehaviour
 {
+    public float damage;
     public float knockbackDuration;
     public float knockbackPower;
+    private UnitController _unitController;
     private PlayerMovement _playerMovement;
+    private CameraController _camController;
 
     private void Awake()
     {
-        _playerMovement = FindObjectOfType<PlayerMovement>();    
+        _playerMovement = FindObjectOfType<PlayerMovement>();
+        _camController = FindObjectOfType<CameraController>();
+        _unitController = _playerMovement.GetComponent<UnitController>();
     }
 
     // Start is called before the first frame update
@@ -25,21 +30,36 @@ public class KnockbackController : MonoBehaviour
         
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            KnockbackPlayer(collision);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            if (!_playerMovement.controller.Invulnerable)
-            {
-                _playerMovement.Stop();
-                _playerMovement.controller.MakeInvulnerable();
-                _playerMovement.controller.KnockbackCount = knockbackDuration;
+            KnockbackPlayer(collision);
+        }
+    }
 
-                if (collision.transform.position.x < transform.position.x)
-                    _playerMovement.controller.KnockFromRight = true;
-                else
-                    _playerMovement.controller.KnockFromRight = false;
-            }
+    void KnockbackPlayer(Collider2D collision)
+    {
+        if (!_playerMovement.controller.Invulnerable)
+        {
+            _unitController.TakeDamage(damage);
+            _camController.ShakeTheCamera();
+            _playerMovement.Stop();
+            _playerMovement.controller.MakeInvulnerable();
+            _playerMovement.controller.KnockbackCount = knockbackDuration;
+
+            if (collision.transform.position.x < transform.position.x)
+                _playerMovement.controller.KnockFromRight = true;
+            else
+                _playerMovement.controller.KnockFromRight = false;
         }
     }
 }

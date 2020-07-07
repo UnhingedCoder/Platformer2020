@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Jump();
         }
+
     }
 
     void FixedUpdate()

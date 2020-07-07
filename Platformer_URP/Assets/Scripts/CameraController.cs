@@ -6,9 +6,10 @@ using Cinemachine;
 public class CameraController : MonoBehaviour
 {
     public float shakeTime;
-
+    public float amplitudeGain;
+    public float frequencyGain;
     float timer = 0f;
-    public bool shakeCamera = false;
+    bool shakeCamera = false;
     CinemachineVirtualCamera cinevCam;
 
     private void Awake()
@@ -27,7 +28,7 @@ public class CameraController : MonoBehaviour
     {
         if (shakeCamera)
         {
-            Noise(1f, 1f);
+            Noise(amplitudeGain, frequencyGain);
             timer += Time.deltaTime;
             if (timer > shakeTime)
             {
@@ -38,10 +39,10 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    public void Noise(float amplitudeGain, float frequencyGain)
+    public void Noise(float _amplitudeGain, float _frequencyGain)
     {
-        cinevCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = amplitudeGain;
-        cinevCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = frequencyGain;
+        cinevCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = _amplitudeGain;
+        cinevCam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = _frequencyGain;
     }
 
     public void ShakeTheCamera()

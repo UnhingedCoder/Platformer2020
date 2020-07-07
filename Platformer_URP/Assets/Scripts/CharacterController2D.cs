@@ -8,6 +8,7 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private float m_JumpForce = 400f;
     [SerializeField] private float m_DoubleJumpForce = 400f;
     [SerializeField] private float m_knockbackForce;
+    [SerializeField] private float m_StompBounce;
     [SerializeField] private float m_InvulnerabiltyDuration;
     [Range(0, 0.3f)] [SerializeField] private float m_MovementSmoothing = 0.05f;
 	[Range(0, 0.5f)] [SerializeField] private float m_WallRadius = 0.2f;
@@ -125,6 +126,7 @@ public class CharacterController2D : MonoBehaviour
     {
         if (m_knockbackCount > 0)
         {
+            Debug.Log("Got knockbacked");
             m_Knockbacked = true;
             if (m_KnockFromRight)
             {
@@ -157,5 +159,11 @@ public class CharacterController2D : MonoBehaviour
     {
         m_invulnerable = true;
         m_invulnerabiltyTime = m_InvulnerabiltyDuration;
+    }
+
+    public void Stomp()
+    {
+        Debug.Log("Stomping");
+        m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_StompBounce);
     }
 }
