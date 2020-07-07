@@ -46,6 +46,8 @@ GameObject:
   - component: {fileID: 444509483965300184}
   - component: {fileID: 444509483965300185}
   - component: {fileID: 1845979837}
+  - component: {fileID: 1735600529}
+  - component: {fileID: 1735600535}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -238,7 +240,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalHealth: 10
-  currentHealth: 5
+  currentHealth: 3
+--- !u!95 &1735600529
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444509483965300189}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6743c39b5de8ada438940486d2851dc7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1735600535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444509483965300189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18f09b2ec174e864a8a852a76eaf4888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fade: 1
+  playerMat: {fileID: 2100000, guid: 2f20e3fd03f9a904f8920992314f6da2, type: 2}
+  burstFX: {fileID: 3434490923641769986, guid: b645acdde43e73444be37dd7a65db0c0, type: 3}
 --- !u!1 &444509484890701021
 GameObject:
   m_ObjectHideFlags: 0

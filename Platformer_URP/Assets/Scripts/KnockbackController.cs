@@ -6,7 +6,8 @@ public class KnockbackController : MonoBehaviour
 {
     public float damage;
     public float knockbackDuration;
-    public float knockbackPower;
+
+    public GameObject burstFX;
     private UnitController _unitController;
     private PlayerMovement _playerMovement;
     private CameraController _camController;

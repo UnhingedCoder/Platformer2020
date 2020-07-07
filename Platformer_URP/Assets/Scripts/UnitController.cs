@@ -27,4 +27,9 @@ public class UnitController : MonoBehaviour
         currentHealth -= dmg;
     }
 
+    public bool IsAlive()
+    {
+        return currentHealth > 0 ? true : false;
+    }
+
 }

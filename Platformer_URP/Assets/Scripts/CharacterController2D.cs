@@ -27,12 +27,14 @@ public class CharacterController2D : MonoBehaviour
     private bool m_CanDoubleJump = false;
     private Rigidbody2D m_Rigidbody2D;
     private bool m_FacingRight = true;
+    private bool m_canMove = false;
     private Vector3 velocity = Vector3.zero;
 
     public bool Grounded { get => m_Grounded;}
     public bool KnockFromRight { get => m_KnockFromRight; set => m_KnockFromRight = value; }
     public float KnockbackCount { get => m_knockbackCount; set => m_knockbackCount = value; }
     public bool Invulnerable { get => m_invulnerable; set => m_invulnerable = value; }
+    public bool CanMove { get => m_canMove; set => m_canMove = value; }
 
     private void Awake()
     {
@@ -56,6 +58,12 @@ public class CharacterController2D : MonoBehaviour
 
 	public void Move(float move, bool jump)
 	{
+        if (!m_canMove)
+        {
+            m_Rigidbody2D.velocity = Vector2.zero;
+            return;
+        }
+
         if (m_Knockbacked)
             return;
 
