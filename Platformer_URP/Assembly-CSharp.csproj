@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\CharacterController2D.cs" />
     <Compile Include="Assets\Scripts\DestroyParticles.cs" />
+    <Compile Include="Assets\Scripts\FlameController.cs" />
     <Compile Include="Assets\Scripts\HUDController.cs" />
     <Compile Include="Assets\Scripts\KnockbackController.cs" />
     <Compile Include="Assets\Scripts\ObjectPooler.cs" />
