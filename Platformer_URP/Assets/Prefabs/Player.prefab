@@ -311,7 +311,8 @@ MonoBehaviour:
   - 25
   - 22
   index: 0
-  stompController: {fileID: 2048428963862701650}
+  groundBurstFX: {fileID: 5678039347113422338, guid: 166b6cc6f5c3543dab6b59f8f2358f8f,
+    type: 3}
 --- !u!1 &444509484890701021
 GameObject:
   m_ObjectHideFlags: 0

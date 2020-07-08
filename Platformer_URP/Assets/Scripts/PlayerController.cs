@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public List<float> scaleValList = new List<float>();
     public List<float> speedValList = new List<float>();
     public int index;
+    public GameObject groundBurstFX;
     UnitController unit;
     PlayerMovement playerMovement;
     PlayerViewController playerView;
@@ -51,11 +52,24 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.transform.gameObject.CompareTag("BreakableGround"))
         {
-            Vector2 impactVelocity = collision.relativeVelocity;
-            float magnitude = Mathf.Max(0f, impactVelocity.magnitude - 1);
-            Debug.Log("Touching breaking ground");
-
+            CheckForGroundBreak(collision);
         }
 
+    }
+
+    void CheckForGroundBreak(Collision2D collision)
+    {
+        if (index < 2)
+            return;
+
+        Vector2 impactVelocity = collision.relativeVelocity;
+        float magnitude = Mathf.Max(0f, impactVelocity.magnitude - 1);
+        if (magnitude > 10)
+        {
+            GameObject fx = Instantiate(groundBurstFX, new Vector3(this.transform.position.x, this.transform.position.y, 0), groundBurstFX.transform.rotation);
+            fx.transform.localScale = new Vector3(1, 1, 1);
+            collision.transform.gameObject.SetActive(false);
+        }
+        Debug.Log("Touching breaking ground");
     }
 }

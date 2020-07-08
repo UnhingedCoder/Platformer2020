@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Enemy
   - EnemyHead
+  - BreakableGround
   layers:
   - Default
   - TransparentFX

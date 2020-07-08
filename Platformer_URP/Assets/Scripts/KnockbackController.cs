@@ -49,7 +49,7 @@ public class KnockbackController : MonoBehaviour
 
     void KnockbackPlayer(Collider2D collision)
     {
-        if (!_playerMovement.controller.Invulnerable)
+        if (!_playerMovement.controller.Invulnerable && _unitController.currentHealth > 0)
         {
             _unitController.TakeDamage(damage);
             _camController.ShakeTheCamera();
