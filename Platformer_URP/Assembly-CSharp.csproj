@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\KnockbackController.cs" />
     <Compile Include="Assets\Scripts\ObjectPooler.cs" />
     <Compile Include="Assets\Scripts\ObstacleDetector.cs" />
+    <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\PlayerViewController.cs" />
     <Compile Include="Assets\Scripts\ProjectileController.cs" />

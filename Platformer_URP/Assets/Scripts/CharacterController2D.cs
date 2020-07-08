@@ -35,6 +35,7 @@ public class CharacterController2D : MonoBehaviour
     public float KnockbackCount { get => m_knockbackCount; set => m_knockbackCount = value; }
     public bool Invulnerable { get => m_invulnerable; set => m_invulnerable = value; }
     public bool CanMove { get => m_canMove; set => m_canMove = value; }
+    public bool FacingRight { get => m_FacingRight; set => m_FacingRight = value; }
 
     private void Awake()
     {

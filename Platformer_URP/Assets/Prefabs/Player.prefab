@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 1845979837}
   - component: {fileID: 1735600529}
   - component: {fileID: 1735600535}
+  - component: {fileID: 798980079}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -64,7 +65,7 @@ Transform:
   m_GameObject: {fileID: 444509483965300189}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -24.57, y: -0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_Children:
   - {fileID: 444509484890701020}
   - {fileID: 1805813278}
@@ -199,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_JumpForce: 500
-  m_DoubleJumpForce: 400
+  m_DoubleJumpForce: 500
   m_knockbackForce: 10
   m_StompBounce: 7
   m_InvulnerabiltyDuration: 1
@@ -239,8 +240,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac7c3acecdf84545afd360880eeba66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalHealth: 10
+  totalHealth: 3
   currentHealth: 3
+  e_HealthChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 798980079}
+        m_MethodName: CheckHealth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &1735600529
 Animator:
   serializedVersion: 3
@@ -275,6 +290,28 @@ MonoBehaviour:
   fade: 1
   playerMat: {fileID: 2100000, guid: 2f20e3fd03f9a904f8920992314f6da2, type: 2}
   burstFX: {fileID: 3434490923641769986, guid: b645acdde43e73444be37dd7a65db0c0, type: 3}
+--- !u!114 &798980079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444509483965300189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2464cc3db269f8549a71c63a7ea7ba3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleValList:
+  - 0.65
+  - 0.95
+  - 1.25
+  speedValList:
+  - 28
+  - 25
+  - 22
+  index: 0
+  stompController: {fileID: 2048428963862701650}
 --- !u!1 &444509484890701021
 GameObject:
   m_ObjectHideFlags: 0

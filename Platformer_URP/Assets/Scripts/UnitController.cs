@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UnitController : MonoBehaviour
 {
-    public float totalHealth;
+    public float totalHealth = 3;
     public float currentHealth;
 
+    public UnityEvent e_HealthChanged;
     private void Awake()
     {
     }
@@ -25,6 +27,17 @@ public class UnitController : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         currentHealth -= dmg;
+        e_HealthChanged.Invoke();
+    }
+
+    public void Heal(float health)
+    {
+        if ((currentHealth + health) > totalHealth)
+            currentHealth = totalHealth;
+        else
+            currentHealth += health;
+
+        e_HealthChanged.Invoke();
     }
 
     public bool IsAlive()
