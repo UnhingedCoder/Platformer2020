@@ -55,11 +55,16 @@ public class PlayerController : MonoBehaviour
             CheckForGroundBreak(collision);
         }
 
+        if (collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            this.transform.SetParent(collision.transform);
+        }
+
     }
 
     void CheckForGroundBreak(Collision2D collision)
     {
-        if (index < 2)
+        if (index < 1)
             return;
 
         Vector2 impactVelocity = collision.relativeVelocity;
@@ -71,5 +76,13 @@ public class PlayerController : MonoBehaviour
             collision.transform.gameObject.SetActive(false);
         }
         Debug.Log("Touching breaking ground");
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("MovingPlatform"))
+        {
+            this.transform.SetParent(null);
+        }
     }
 }

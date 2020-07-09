@@ -22,5 +22,19 @@ public class PlatformController : MonoBehaviour
     void Update()
     {
         platform.transform.position = Vector3.MoveTowards(platform.transform.position, currentPoint.transform.position, Time.deltaTime * moveSpeed);
+
+        if (platform.transform.position == currentPoint.position)
+        {
+            pointSelection++;
+
+            if (pointSelection == points.Length)
+            {
+                pointSelection = 0;
+            }
+
+            currentPoint = points[pointSelection];
+        }
     }
+
+    
 }

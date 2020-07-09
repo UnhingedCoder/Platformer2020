@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - EnemyHead
   - BreakableGround
+  - MovingPlatform
   layers:
   - Default
   - TransparentFX

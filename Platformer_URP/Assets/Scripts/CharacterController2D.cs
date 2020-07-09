@@ -18,6 +18,7 @@ public class CharacterController2D : MonoBehaviour
 	[SerializeField] private Transform m_WallCheck;
 
     const float k_GroundedRadius = 0.2f;
+    private float jumpScale = 1f;
     private bool m_Grounded;
     private float m_knockbackCount;
     private bool m_Knockbacked;
@@ -27,6 +28,7 @@ public class CharacterController2D : MonoBehaviour
     private bool m_CanDoubleJump = false;
     private Rigidbody2D m_Rigidbody2D;
     private bool m_FacingRight = true;
+    private bool m_FacingUp = true;
     private bool m_canMove = false;
     private Vector3 velocity = Vector3.zero;
 
@@ -80,13 +82,13 @@ public class CharacterController2D : MonoBehaviour
 			if (move > 0 && !m_FacingRight)
 			{
 				// ... flip the player.
-				Flip();
+				FlipHorizontal();
 			}
 			// Otherwise if the input is moving the player left and the player is facing right...
 			else if (move < 0 && m_FacingRight)
 			{
 				// ... flip the player.
-				Flip();
+				FlipHorizontal();
 			}
         }
 
@@ -96,7 +98,7 @@ public class CharacterController2D : MonoBehaviour
         {
             if (m_Grounded)
             {
-                m_Rigidbody2D.AddForce(new Vector2(m_Rigidbody2D.velocity.x / 4, m_JumpForce));
+                m_Rigidbody2D.AddForce(new Vector2(m_Rigidbody2D.velocity.x / 4, m_JumpForce * jumpScale));
                 m_CanDoubleJump = true;
             }
             else
@@ -105,14 +107,14 @@ public class CharacterController2D : MonoBehaviour
                 {
                     m_CanDoubleJump = false;
                     m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
-                    m_Rigidbody2D.AddForce(new Vector2(m_Rigidbody2D.velocity.x, m_DoubleJumpForce));
+                    m_Rigidbody2D.AddForce(new Vector2(m_Rigidbody2D.velocity.x, m_DoubleJumpForce * jumpScale));
                 }
             }
         }
 	}
 
 
-	private void Flip()
+	private void FlipHorizontal()
 	{
 		// Switch the way the player is labelled as facing.
 		m_FacingRight = !m_FacingRight;
