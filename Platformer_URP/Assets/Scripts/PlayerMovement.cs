@@ -36,6 +36,11 @@ public class PlayerMovement : MonoBehaviour
             Jump();
         }
 
+        if (Input.GetButtonUp("Jump"))
+        {
+            JumpStop();
+        }
+
     }
 
     void FixedUpdate()
@@ -59,6 +64,11 @@ public class PlayerMovement : MonoBehaviour
     public void Jump()
     {
         m_jump = true;
+    }
+
+    public void JumpStop()
+    {
+        controller.BreakJump();
     }
 
     public void Stop()

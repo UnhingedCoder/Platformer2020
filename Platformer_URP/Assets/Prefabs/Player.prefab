@@ -199,8 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c27e7206b74f346979635b68f6d15d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 500
-  m_DoubleJumpForce: 500
+  m_JumpForce: 650
+  m_DoubleJumpForce: 650
   m_knockbackForce: 10
   m_StompBounce: 7
   m_InvulnerabiltyDuration: 1
@@ -399,7 +399,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.46, y: 0.0630669}
+  m_Size: {x: 0.51, y: 0.0630669}
   m_EdgeRadius: 0
 --- !u!114 &2048428963862701650
 MonoBehaviour:

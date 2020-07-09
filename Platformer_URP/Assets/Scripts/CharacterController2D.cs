@@ -113,6 +113,12 @@ public class CharacterController2D : MonoBehaviour
         }
 	}
 
+    public void BreakJump()
+    {
+        if(m_Rigidbody2D.velocity.y > 0)
+            m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y * 0.5f);
+    }
+
 
 	private void FlipHorizontal()
 	{
