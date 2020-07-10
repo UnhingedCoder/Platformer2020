@@ -200,12 +200,12 @@ PrefabInstance:
     - target: {fileID: 5822468377634211016, guid: c280fb93469cf44b09dfeb28215a493c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.671797
+      value: -0.8460014
       objectReference: {fileID: 0}
     - target: {fileID: 5822468377634211016, guid: c280fb93469cf44b09dfeb28215a493c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.18555951
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 5822468377634211016, guid: c280fb93469cf44b09dfeb28215a493c,
         type: 3}
@@ -676,7 +676,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 711574443}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.57, y: 3.8625002, z: -10}
+  m_LocalPosition: {x: -20.4825, y: 3.8625002, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -726,12 +726,12 @@ PrefabInstance:
     - target: {fileID: 5822468377634211016, guid: c280fb93469cf44b09dfeb28215a493c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.645796
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 5822468377634211016, guid: c280fb93469cf44b09dfeb28215a493c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.18555951
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 5822468377634211016, guid: c280fb93469cf44b09dfeb28215a493c,
         type: 3}
@@ -873,7 +873,7 @@ GameObject:
   - component: {fileID: 1296351163}
   - component: {fileID: 1296351162}
   - component: {fileID: 1296351161}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BreakingGround_01
   m_TagString: BreakableGround
   m_Icon: {fileID: 0}
@@ -1151,7 +1151,7 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_XDamping: 1
+  m_XDamping: 5
   m_YDamping: 1
   m_ZDamping: 1
   m_TargetMovementOnly: 0
@@ -2564,7 +2564,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825911904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.57, y: 3.8625002, z: -10}
+  m_LocalPosition: {x: -20.4825, y: 3.8625002, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1344175909}
@@ -2644,12 +2644,12 @@ PrefabInstance:
     - target: {fileID: 5822468377634211016, guid: c280fb93469cf44b09dfeb28215a493c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.742796
+      value: -8.85
       objectReference: {fileID: 0}
     - target: {fileID: 5822468377634211016, guid: c280fb93469cf44b09dfeb28215a493c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.18555951
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 5822468377634211016, guid: c280fb93469cf44b09dfeb28215a493c,
         type: 3}
@@ -2848,16 +2848,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 444509483965300184, guid: 6c1ab640121a6d04498c9600ad89a06e,
-        type: 3}
-      propertyPath: m_JumpForce
-      value: 600
-      objectReference: {fileID: 0}
-    - target: {fileID: 444509483965300184, guid: 6c1ab640121a6d04498c9600ad89a06e,
-        type: 3}
-      propertyPath: m_DoubleJumpForce
-      value: 600
-      objectReference: {fileID: 0}
     - target: {fileID: 444509483965300185, guid: 6c1ab640121a6d04498c9600ad89a06e,
         type: 3}
       propertyPath: joystick
@@ -2935,7 +2925,7 @@ PrefabInstance:
     - target: {fileID: 5822468377634211016, guid: c280fb93469cf44b09dfeb28215a493c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -23.742
+      value: -20.24
       objectReference: {fileID: 0}
     - target: {fileID: 5822468377634211016, guid: c280fb93469cf44b09dfeb28215a493c,
         type: 3}

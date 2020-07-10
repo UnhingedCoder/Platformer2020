@@ -7,6 +7,8 @@ public class CharacterController2D : MonoBehaviour
 {
     [SerializeField] private float m_JumpForce = 400f;
     [SerializeField] private float m_DoubleJumpForce = 400f;
+    [SerializeField] private float m_JumpBufferLength;
+    [SerializeField] private float m_HangTime;
     [SerializeField] private float m_knockbackForce;
     [SerializeField] private float m_StompBounce;
     [SerializeField] private float m_InvulnerabiltyDuration;
@@ -16,10 +18,18 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private LayerMask m_WhatIsGround;
     [SerializeField] private Transform m_GroundCheck;
 	[SerializeField] private Transform m_WallCheck;
+    [SerializeField] private ParticleSystem ps_footsteps;
+    [SerializeField] private ParticleSystem ps_impactDust;
+    [SerializeField] private ParticleSystem ps_doubleJumpBlast;
+    private ParticleSystem.EmissionModule footstepsModule;
 
     const float k_GroundedRadius = 0.2f;
-    private float jumpScale = 1f;
+    private bool m_jump; 
+    private float m_jumpScale = 1f;
+    private float m_hangCounter;
+    private float m_jumpBufferCount;
     private bool m_Grounded;
+    private bool m_wasGrounded = true;
     private float m_knockbackCount;
     private bool m_Knockbacked;
     private bool m_KnockFromRight;
@@ -42,9 +52,33 @@ public class CharacterController2D : MonoBehaviour
     private void Awake()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
+        footstepsModule = ps_footsteps.emission;
     }
 
-	private void FixedUpdate()
+    private void Update()
+    {
+        //Check for hangtime
+        if (m_Grounded)
+        {
+            m_hangCounter = m_HangTime;
+        }
+        else
+        {
+            m_hangCounter -= Time.deltaTime;
+        }
+
+        //Check for jump buffer
+        if (m_jump)
+        {
+            m_jumpBufferCount = m_JumpBufferLength;
+        }
+        else
+        {
+            m_knockbackCount -= Time.deltaTime;
+        }
+    }
+
+    private void FixedUpdate()
 	{
         KnocbackCheck();
 
@@ -57,21 +91,45 @@ public class CharacterController2D : MonoBehaviour
 			if (colliders[i].gameObject != gameObject)
 				m_Grounded = true;
 		}
+
+
+        //ImpactEffect
+        if (!m_wasGrounded && Grounded)
+        {
+            ps_impactDust.gameObject.SetActive(true);
+            ps_impactDust.Stop();
+            ps_impactDust.Play();
+        }
+
+        m_wasGrounded = Grounded;
     }
 
 	public void Move(float move, bool jump)
 	{
+        m_jump = jump;
+
         if (!m_canMove)
         {
             m_Rigidbody2D.velocity = Vector2.zero;
+            footstepsModule.rateOverTime = 0f;
             return;
         }
 
         if (m_Knockbacked)
             return;
 
-		//only control the player if grounded or airControl is turned on
-		if (m_Grounded || m_AirControl)
+        //Footsteps dust trail FX
+        if (move != 0 && m_Grounded)
+        {
+            footstepsModule.rateOverTime = 35f;
+        }
+        else
+        {
+            footstepsModule.rateOverTime = 0f;
+        }
+
+        //only control the player if grounded or airControl is turned on
+        if (m_Grounded || m_AirControl)
 		{
 			// Move the character by finding the target velocity
 			Vector3 targetVelocity = new Vector2(move * 10f, m_Rigidbody2D.velocity.y);
@@ -96,10 +154,11 @@ public class CharacterController2D : MonoBehaviour
         // If the player should jump...
         if (jump)
         {
-            if (m_Grounded)
+            if (m_hangCounter > 0 && m_jumpBufferCount >= 0)
             {
-                m_Rigidbody2D.AddForce(new Vector2(m_Rigidbody2D.velocity.x / 4, m_JumpForce * jumpScale));
+                m_Rigidbody2D.AddForce(new Vector2(m_Rigidbody2D.velocity.x / 4, m_JumpForce * m_jumpScale));
                 m_CanDoubleJump = true;
+                m_jumpBufferCount = 0;
             }
             else
             {
@@ -107,7 +166,11 @@ public class CharacterController2D : MonoBehaviour
                 {
                     m_CanDoubleJump = false;
                     m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
-                    m_Rigidbody2D.AddForce(new Vector2(m_Rigidbody2D.velocity.x, m_DoubleJumpForce * jumpScale));
+                    m_Rigidbody2D.AddForce(new Vector2(m_Rigidbody2D.velocity.x, m_DoubleJumpForce * m_jumpScale));
+
+                    ps_doubleJumpBlast.gameObject.SetActive(true);
+                    ps_doubleJumpBlast.Stop();
+                    ps_doubleJumpBlast.Play();
                 }
             }
         }
