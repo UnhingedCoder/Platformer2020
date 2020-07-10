@@ -15,6 +15,7 @@ public class CharacterController2D : MonoBehaviour
     [Range(0, 0.3f)] [SerializeField] private float m_MovementSmoothing = 0.05f;
 	[Range(0, 0.5f)] [SerializeField] private float m_WallRadius = 0.2f;
 	[SerializeField] private bool m_AirControl = false;
+    [SerializeField] private bool m_AllowDoubleJump = false;
     [SerializeField] private LayerMask m_WhatIsGround;
     [SerializeField] private Transform m_GroundCheck;
 	[SerializeField] private Transform m_WallCheck;
@@ -157,7 +158,10 @@ public class CharacterController2D : MonoBehaviour
             if (m_hangCounter > 0 && m_jumpBufferCount >= 0)
             {
                 m_Rigidbody2D.AddForce(new Vector2(m_Rigidbody2D.velocity.x / 4, m_JumpForce * m_jumpScale));
-                m_CanDoubleJump = true;
+
+                if(m_AllowDoubleJump)
+                    m_CanDoubleJump = true;
+
                 m_jumpBufferCount = 0;
             }
             else

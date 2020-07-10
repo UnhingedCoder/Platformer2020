@@ -71,11 +71,11 @@ public class PlayerController : MonoBehaviour
         float magnitude = Mathf.Max(0f, impactVelocity.magnitude - 1);
         if (magnitude > 10)
         {
-            GameObject fx = Instantiate(groundBurstFX, new Vector3(this.transform.position.x, this.transform.position.y, 0), groundBurstFX.transform.rotation);
+            GameObject fx = Instantiate(groundBurstFX, new Vector3(collision.contacts[0].point.x, collision.contacts[0].point.y, 0), groundBurstFX.transform.rotation);
             fx.transform.localScale = new Vector3(1, 1, 1);
             collision.transform.gameObject.SetActive(false);
+            Debug.Log("Touching breaking ground");
         }
-        Debug.Log("Touching breaking ground");
     }
 
     private void OnCollisionExit2D(Collision2D collision)
