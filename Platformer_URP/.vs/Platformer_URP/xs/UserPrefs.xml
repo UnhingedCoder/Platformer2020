@@ -2,8 +2,8 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Player/PlayerController.cs">
     <Files>
       <File FileName="Assets/Scripts/StompController.cs" Line="8" Column="37" />
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="13" Column="38" />
-      <File FileName="Assets/Scripts/CharacterController2D.cs" Line="119" Column="38" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="56" Column="50" />
+      <File FileName="Assets/Scripts/CharacterController2D.cs" Line="289" Column="30" />
       <File FileName="Assets/Scripts/PlayerAudioController.cs" Line="37" Column="32" />
       <File FileName="Assets/Scripts/PlayerMovement.cs" Line="11" Column="1" />
       <File FileName="Assets/Scripts/KnockbackController.cs" Line="65" Column="46" />
