@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerViewController : MonoBehaviour
 {
@@ -8,14 +9,15 @@ public class PlayerViewController : MonoBehaviour
     public Material playerMat;
     public GameObject burstFX;
     public VectorValue spawnPos;
-    private UnitController unit;
-    private PlayerMovement playerMovement;
+
+    private PlayerController player;
     private Animator anim;
+
+    public UnityEvent e_OnDeath;
 
     private void Awake()
     {
-        unit = GetComponent<UnitController>();
-        playerMovement = GetComponent<PlayerMovement>();
+        player = FindObjectOfType<PlayerController>();
         anim = GetComponent<Animator>();    
     }
 
@@ -34,18 +36,19 @@ public class PlayerViewController : MonoBehaviour
     void Update()
     {
         playerMat.SetFloat("_Fade", fade);
-        anim.SetBool("Invulnerable", playerMovement.controller.Invulnerable);
-        anim.SetBool("Alive", unit.IsAlive());
+        anim.SetBool("Invulnerable", player.playerMovement.controller.Invulnerable);
+        anim.SetBool("Alive", player.unit.IsAlive());
     }
 
     public void OnSpawn()
     {
-        playerMovement.controller.CanMove = true;
+        player.playerMovement.controller.CanMove = true;
     }
 
     public void OnDeath()
     {
-        playerMovement.controller.CanMove = false;
+        e_OnDeath.Invoke();
+        player.playerMovement.controller.CanMove = false;
     }
 
     public void SpawnDeathFX()

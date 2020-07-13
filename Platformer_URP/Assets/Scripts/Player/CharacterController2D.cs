@@ -32,7 +32,6 @@ public class CharacterController2D : MonoBehaviour
     private float m_jumpBufferCount;
     private bool m_InWater = false;
     private bool m_Grounded;
-    private bool m_wasGrounded = true;
     private float m_knockbackCount;
     private bool m_Knockbacked;
     private bool m_KnockFromRight;
@@ -51,6 +50,11 @@ public class CharacterController2D : MonoBehaviour
     public bool Invulnerable { get => m_invulnerable; set => m_invulnerable = value; }
     public bool CanMove { get => m_canMove; set => m_canMove = value; }
     public bool FacingRight { get => m_FacingRight; set => m_FacingRight = value; }
+
+
+    public UnityEvent e_OnJump;
+    public UnityEvent e_OnLanding;
+    public UnityEvent e_OnHurt;
 
     private void Awake()
     {
@@ -101,20 +105,6 @@ public class CharacterController2D : MonoBehaviour
         {
             m_Grounded = true;
         }
-
-
-        //ImpactEffect
-        if (!m_wasGrounded && Grounded && CanMove)
-        {
-            if (!m_InWater)
-            {
-                ps_impactDust.gameObject.SetActive(true);
-                ps_impactDust.Stop();
-                ps_impactDust.Play();
-            }
-        }
-
-        m_wasGrounded = Grounded;
     }
 
 	public void Move(float move, bool jump)
@@ -175,6 +165,8 @@ public class CharacterController2D : MonoBehaviour
                     m_CanDoubleJump = true;
 
                 m_jumpBufferCount = 0;
+
+                e_OnJump.Invoke();
             }
             else
             {
@@ -280,11 +272,20 @@ public class CharacterController2D : MonoBehaviour
     {
         m_invulnerable = true;
         m_invulnerabiltyTime = m_InvulnerabiltyDuration;
+        e_OnHurt.Invoke();
     }
 
     public void Stomp()
     {
         Debug.Log("Stomping");
         m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_StompBounce);
+    }
+
+    public void OnGroundImpact()
+    {
+        ps_impactDust.gameObject.SetActive(true);
+        ps_impactDust.Stop();
+        ps_impactDust.Play();
+        e_OnLanding.Invoke();
     }
 }

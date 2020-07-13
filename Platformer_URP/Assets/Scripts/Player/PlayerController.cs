@@ -12,12 +12,14 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public UnitController unit;
     [HideInInspector] public PlayerMovement playerMovement;
     [HideInInspector] public PlayerViewController playerView;
+    [HideInInspector] public PlayerAudioController playerAudio;
 
     private void Awake()
     {
         unit = GetComponent<UnitController>();
         playerMovement = GetComponent<PlayerMovement>();
         playerView = GetComponent<PlayerViewController>();
+        playerAudio = GetComponent<PlayerAudioController>();
     }
     // Start is called before the first frame update
     void Start()
@@ -51,6 +53,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (GetJumpImpactMagnitude(collision) > 5)
+            playerMovement.controller.OnGroundImpact();
+
         if(collision.transform.gameObject.CompareTag("BreakableGround"))
         {
             CheckForGroundBreak(collision);
@@ -60,6 +65,16 @@ public class PlayerController : MonoBehaviour
         {
             this.transform.SetParent(collision.transform);
         }
+    }
+
+    float GetJumpImpactMagnitude(Collision2D collision)
+    {
+        Debug.Log("jumpImpactMagnitude");
+        Vector2 impactVelocity = collision.relativeVelocity;
+
+        float magnitude = Mathf.Max(0f, impactVelocity.magnitude - 1); Mathf.Max(0f, impactVelocity.magnitude - 1);
+        Debug.Log("jumpImpactMagnitude"+ magnitude);
+        return magnitude;
     }
 
     void CheckForGroundBreak(Collision2D collision)

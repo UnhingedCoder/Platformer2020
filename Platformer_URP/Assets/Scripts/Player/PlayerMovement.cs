@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class PlayerMovement : MonoBehaviour
     public DynamicJoystick joystick;
     public float runSpeed = 40f;
     public float dir = 1f;
+
+    public UnityEvent e_OnJump;
+
     float dirBeforeStop = 1f;
     float horizontalMove = 0f;
     bool m_jump = false;
@@ -64,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
     public void Jump()
     {
         m_jump = true;
+
     }
 
     public void JumpStop()

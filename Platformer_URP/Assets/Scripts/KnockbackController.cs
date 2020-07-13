@@ -9,15 +9,13 @@ public class KnockbackController : MonoBehaviour
     public bool destroySelf;
     public Vector2 burstOffset;
     public ParticleSystem burstFX;
-    private UnitController _unitController;
-    private PlayerMovement _playerMovement;
+    private PlayerController player;
     private CameraController _camController;
 
     private void Awake()
     {
-        _playerMovement = FindObjectOfType<PlayerMovement>();
+        player = FindObjectOfType<PlayerController>();
         _camController = FindObjectOfType<CameraController>();
-        _unitController = _playerMovement.GetComponent<UnitController>();
     }
 
     // Start is called before the first frame update
@@ -59,18 +57,18 @@ public class KnockbackController : MonoBehaviour
 
     void KnockbackPlayer(Collider2D collision)
     {
-        if (!_playerMovement.controller.Invulnerable && _unitController.currentHealth > 0)
+        if (!player.playerMovement.controller.Invulnerable && player.unit.currentHealth > 0)
         {
-            _unitController.TakeDamage(damage);
+            player.unit.TakeDamage(damage);
             _camController.ShakeTheCamera();
-            _playerMovement.Stop();
-            _playerMovement.controller.MakeInvulnerable();
-            _playerMovement.controller.KnockbackCount = knockbackDuration;
+            player.playerMovement.Stop();
+            player.playerMovement.controller.MakeInvulnerable();
+            player.playerMovement.controller.KnockbackCount = knockbackDuration;
 
             if (collision.transform.position.x < transform.position.x)
-                _playerMovement.controller.KnockFromRight = true;
+                player.playerMovement.controller.KnockFromRight = true;
             else
-                _playerMovement.controller.KnockFromRight = false;
+                player.playerMovement.controller.KnockFromRight = false;
 
         }
     }

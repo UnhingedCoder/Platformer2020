@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthPickUpController : MonoBehaviour
+public class RevealAreaController : MonoBehaviour
 {
-    public float HealAmount;
+    public SpriteRenderer sprRndr;
 
-    private PlayerController player;
-
-    private void Awake()
+    private void OnEnable()
     {
-        player = FindObjectOfType<PlayerController>();        
+        sprRndr.color = new Color(sprRndr.color.r, sprRndr.color.g, sprRndr.color.b, 1);
     }
 
     // Start is called before the first frame update
@@ -29,11 +27,7 @@ public class HealthPickUpController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (player.unit.currentHealth < player.unit.totalHealth)
-            {
-                player.unit.Heal(HealAmount);
-                //this.gameObject.SetActive(false);
-            }
+            sprRndr.color  = new Color(sprRndr.color.r, sprRndr.color.g, sprRndr.color.b, 0);
         }
     }
 }
