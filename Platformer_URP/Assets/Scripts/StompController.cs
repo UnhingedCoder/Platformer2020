@@ -31,7 +31,7 @@ public class StompController : MonoBehaviour
         {
             if (!_playerMovement.controller.Invulnerable)
             {
-                GameObject fx = Instantiate(collision.transform.parent.GetComponent<KnockbackController>().burstFX, new Vector3(this.transform.position.x, this.transform.position.y, 0), collision.transform.parent.GetComponent<KnockbackController>().burstFX.transform.rotation);
+                GameObject fx = Instantiate(collision.transform.parent.GetComponent<KnockbackController>().burstFX.gameObject, new Vector3(this.transform.position.x, this.transform.position.y, 0), collision.transform.parent.GetComponent<KnockbackController>().burstFX.transform.rotation);
                 fx.transform.localScale = new Vector3(1, 1, 1);
                 e_OnStomp.Invoke();
                 Destroy(collision.transform.parent.gameObject);

@@ -6,8 +6,9 @@ public class KnockbackController : MonoBehaviour
 {
     public float damage;
     public float knockbackDuration;
-
-    public GameObject burstFX;
+    public bool destroySelf;
+    public Vector2 burstOffset;
+    public ParticleSystem burstFX;
     private UnitController _unitController;
     private PlayerMovement _playerMovement;
     private CameraController _camController;
@@ -37,6 +38,15 @@ public class KnockbackController : MonoBehaviour
         {
             KnockbackPlayer(collision);
         }
+
+        if (destroySelf && burstFX != null)
+        {
+            this.gameObject.SetActive(false);
+            burstFX.transform.position = new Vector3(this.transform.position.x + burstOffset.x, this.transform.position.y + burstOffset.y, 0) ;
+            burstFX.gameObject.SetActive(true);
+            burstFX.Stop();
+            burstFX.Play();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -61,6 +71,7 @@ public class KnockbackController : MonoBehaviour
                 _playerMovement.controller.KnockFromRight = true;
             else
                 _playerMovement.controller.KnockFromRight = false;
+
         }
     }
 }

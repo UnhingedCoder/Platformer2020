@@ -8,9 +8,10 @@ public class PlayerController : MonoBehaviour
     public List<float> speedValList = new List<float>();
     public int index;
     public GameObject groundBurstFX;
-    UnitController unit;
-    PlayerMovement playerMovement;
-    PlayerViewController playerView;
+
+    [HideInInspector] public UnitController unit;
+    [HideInInspector] public PlayerMovement playerMovement;
+    [HideInInspector] public PlayerViewController playerView;
 
     private void Awake()
     {
@@ -59,7 +60,6 @@ public class PlayerController : MonoBehaviour
         {
             this.transform.SetParent(collision.transform);
         }
-
     }
 
     void CheckForGroundBreak(Collision2D collision)

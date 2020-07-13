@@ -26,7 +26,11 @@ public class UnitController : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
-        currentHealth -= dmg;
+        if ((currentHealth - dmg) > 0)
+            currentHealth -= dmg;
+        else
+            currentHealth = 0;
+
         e_HealthChanged.Invoke();
     }
 

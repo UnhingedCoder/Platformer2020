@@ -9,6 +9,7 @@ TagManager:
   - EnemyHead
   - BreakableGround
   - MovingPlatform
+  - Water
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Ground
   - Player
   - Enemy
-  - 
+  - Detectors
   - 
   - 
   - 

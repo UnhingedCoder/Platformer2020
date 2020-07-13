@@ -1,14 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerViewController : MonoBehaviour
 {
     [Range(0, 1)] public float fade;
     public Material playerMat;
     public GameObject burstFX;
-
+    public VectorValue spawnPos;
     private UnitController unit;
     private PlayerMovement playerMovement;
     private Animator anim;
@@ -20,10 +19,15 @@ public class PlayerViewController : MonoBehaviour
         anim = GetComponent<Animator>();    
     }
 
+    private void OnEnable()
+    {
+        this.transform.position = spawnPos.runtimeValue;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim.SetTrigger("Spawn");
     }
 
     // Update is called once per frame
@@ -52,6 +56,6 @@ public class PlayerViewController : MonoBehaviour
 
     public void OnDeathComplete()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Demo");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
     }
 }

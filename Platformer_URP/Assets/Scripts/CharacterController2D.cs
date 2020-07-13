@@ -22,6 +22,7 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private ParticleSystem ps_footsteps;
     [SerializeField] private ParticleSystem ps_impactDust;
     [SerializeField] private ParticleSystem ps_doubleJumpBlast;
+    [SerializeField] private ParticleSystem ps_waterImpact;
     private ParticleSystem.EmissionModule footstepsModule;
 
     const float k_GroundedRadius = 0.2f;
@@ -29,6 +30,7 @@ public class CharacterController2D : MonoBehaviour
     private float m_jumpScale = 1f;
     private float m_hangCounter;
     private float m_jumpBufferCount;
+    private bool m_InWater = false;
     private bool m_Grounded;
     private bool m_wasGrounded = true;
     private float m_knockbackCount;
@@ -81,25 +83,35 @@ public class CharacterController2D : MonoBehaviour
 
     private void FixedUpdate()
 	{
-        KnocbackCheck();
+        KnockbackCheck();
 
 		m_Grounded = false;
-		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
-		// This can be done using layers instead but Sample Assets will not overwrite your project settings.
-		Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
-		for (int i = 0; i < colliders.Length; i++)
-		{
-			if (colliders[i].gameObject != gameObject)
-				m_Grounded = true;
-		}
+        if (!m_InWater)
+        {
+            // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
+            // This can be done using layers instead but Sample Assets will not overwrite your project settings.
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
+            for (int i = 0; i < colliders.Length; i++)
+            {
+                if (colliders[i].gameObject != gameObject)
+                    m_Grounded = true;
+            }
+        }
+        else
+        {
+            m_Grounded = true;
+        }
 
 
         //ImpactEffect
-        if (!m_wasGrounded && Grounded)
+        if (!m_wasGrounded && Grounded && CanMove)
         {
-            ps_impactDust.gameObject.SetActive(true);
-            ps_impactDust.Stop();
-            ps_impactDust.Play();
+            if (!m_InWater)
+            {
+                ps_impactDust.gameObject.SetActive(true);
+                ps_impactDust.Stop();
+                ps_impactDust.Play();
+            }
         }
 
         m_wasGrounded = Grounded;
@@ -120,7 +132,7 @@ public class CharacterController2D : MonoBehaviour
             return;
 
         //Footsteps dust trail FX
-        if (move != 0 && m_Grounded)
+        if (move != 0 && m_Grounded && !m_InWater)
         {
             footstepsModule.rateOverTime = 35f;
         }
@@ -180,6 +192,31 @@ public class CharacterController2D : MonoBehaviour
         }
 	}
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Water"))
+        {
+            if (!m_InWater)
+            {
+                ps_waterImpact.gameObject.SetActive(true);
+                ps_waterImpact.transform.position = new Vector2(collision.ClosestPoint(this.transform.position).x, collision.ClosestPoint(this.transform.position).y);
+                ps_waterImpact.Stop();
+                ps_waterImpact.Play();
+            }
+            m_InWater = true;
+            Debug.Log("Stepped into water");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Water"))
+        {
+            m_InWater = false;
+            Debug.Log("Stepped out of water");
+        }
+    }
+
     public void BreakJump()
     {
         if(m_Rigidbody2D.velocity.y > 0)
@@ -206,7 +243,7 @@ public class CharacterController2D : MonoBehaviour
             return false;
     }
 
-    private void KnocbackCheck()
+    private void KnockbackCheck()
     {
         if (m_knockbackCount > 0)
         {
