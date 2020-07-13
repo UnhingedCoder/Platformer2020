@@ -32,7 +32,6 @@ public class HealthPickUpController : MonoBehaviour
             if (player.unit.currentHealth < player.unit.totalHealth)
             {
                 player.unit.Heal(HealAmount);
-                //this.gameObject.SetActive(false);
             }
         }
     }
