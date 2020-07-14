@@ -16,6 +16,9 @@ public class PlayerAudioController : MonoBehaviour
     public AudioClip hurtSFX;
     public float hurtVol;
 
+    public AudioClip healSFX;
+    public float healVol;
+
     private AudioSource _audio;
 
     private void Awake()
@@ -37,6 +40,11 @@ public class PlayerAudioController : MonoBehaviour
     public void PlayHurtSound()
     {
         PlaySound(hurtSFX, hurtVol);
+    }
+
+    public void PlayHealSound()
+    {
+        PlaySound(healSFX, healVol);
     }
 
     public void PlayDeathSound()

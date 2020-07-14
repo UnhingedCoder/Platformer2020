@@ -19473,9 +19473,6 @@ MonoBehaviour:
   joystick: {fileID: 0}
   runSpeed: 25
   dir: 1
-  e_OnJump:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1845979837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19495,6 +19492,20 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 798980079}
         m_MethodName: CheckHealth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  e_HealRegained:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3636892320654380493}
+        m_MethodName: PlayHealSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19688,7 +19699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c7c662e6b94a46f3b80824e57bc717a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpSFX: {fileID: 8300000, guid: 4d2eb17cb3b2849c8ab6ec3764edeba0, type: 3}
+  jumpSFX: {fileID: 8300000, guid: e9124ba06cb5587409f8e6490b29f62a, type: 3}
   jumpVol: 0.5
   jumpImpactSFX: {fileID: 8300000, guid: d5c830767e9d74e46bc96c9c416fab07, type: 3}
   jumpImpactVol: 0.15
@@ -19696,6 +19707,8 @@ MonoBehaviour:
   deathVol: 0.5
   hurtSFX: {fileID: 8300000, guid: 41118dc754127466db745b982dcecc53, type: 3}
   hurtVol: 0.5
+  healSFX: {fileID: 8300000, guid: 73e1eaeace4b27840992d1d708536ac4, type: 3}
+  healVol: 0.5
 --- !u!1 &444509484890701021
 GameObject:
   m_ObjectHideFlags: 0

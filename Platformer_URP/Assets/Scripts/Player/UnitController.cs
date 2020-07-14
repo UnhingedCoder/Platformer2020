@@ -9,6 +9,7 @@ public class UnitController : MonoBehaviour
     public float currentHealth;
 
     public UnityEvent e_HealthChanged;
+    public UnityEvent e_HealRegained;
     private void Awake()
     {
     }
@@ -42,6 +43,7 @@ public class UnitController : MonoBehaviour
             currentHealth += health;
 
         e_HealthChanged.Invoke();
+        e_HealRegained.Invoke();
     }
 
     public bool IsAlive()
