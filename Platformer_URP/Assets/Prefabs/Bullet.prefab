@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 6047960945037008203}
   - component: {fileID: 3808932507693744216}
   - component: {fileID: 4624446070159863800}
-  m_Layer: 0
+  - component: {fileID: -9023961664459228915}
+  m_Layer: 10
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,5 +144,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 899d9ee72d7c43449bb2e0e589e6551f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 200
-  _objectPooler: {fileID: 0}
+  speed: 10
+  objectPoolerName: BulletPooler
+  particleObjectPoolerName: BulletBurstPooler
+--- !u!114 &-9023961664459228915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345338355958463985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14649db0698a49341ba3b847f8b690c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  knockbackDuration: 0.1
+  destroySelf: 0
+  burstOffset: {x: 0, y: 0}
+  burstFX: {fileID: 0}

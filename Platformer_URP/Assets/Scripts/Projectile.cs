@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileController : MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     public float speed;
+    public string objectPoolerName;
+    public string particleObjectPoolerName;
 
     private Rigidbody2D _rigidBody;
-    public ObjectPooler _objectPooler;
+    private ObjectPooler _objectPooler;
+    private ObjectPooler _particleObjectPooler;
 
     private void Awake()
     {
         _rigidBody = this.gameObject.GetComponent<Rigidbody2D>();
-        _objectPooler = FindObjectOfType<ObjectPooler>();
+        _objectPooler = GameObject.Find("ObjectPoolers/" + objectPoolerName).GetComponent<ObjectPooler>();
+        _particleObjectPooler = GameObject.Find("ObjectPoolers/" + particleObjectPoolerName).GetComponent<ObjectPooler>();
     }
         // Start is called before the first frame update
     void Start()
@@ -37,12 +41,20 @@ public class ProjectileController : MonoBehaviour
         return new Vector3(0, 0, temp);
     }
 
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.gameObject.CompareTag("Player"))
-        {
-            _objectPooler.DestroyPooledObject(this.gameObject);
+        _objectPooler.DestroyPooledObject(this.gameObject);
 
-        }
+        Vector3 offsetPos = new Vector3(this.transform.position.x - 0.5f, this.transform.position.y, 0);
+
+        ParticleSystem ps_burstFx = _particleObjectPooler.GetPooledObject(offsetPos).GetComponent<ParticleSystem>();
+
+        if (ps_burstFx == null)
+            return;
+
+        ps_burstFx.gameObject.SetActive(true);
+        ps_burstFx.Stop();
+        ps_burstFx.Play();
     }
 }

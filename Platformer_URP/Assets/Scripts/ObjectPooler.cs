@@ -28,18 +28,19 @@ public class ObjectPooler : MonoBehaviour
         for (int i = 0; i < initPool; i++)
         {
             GameObject temp = (GameObject)Instantiate(pooledObjPrefab);
+            temp.transform.SetParent(this.transform);
             temp.SetActive(false);
             pooledObjList.Add(temp);
         }
     }
 
-    public GameObject GetPooledObject(Transform parent)
+    public GameObject GetPooledObject(Vector3 refPos)
     {
         for (int i = 0; i < pooledObjList.Count; i++)
         {
             if (!pooledObjList[i].activeInHierarchy)
             {
-                pooledObjList[i].transform.localPosition = parent.position;
+                pooledObjList[i].transform.localPosition = refPos;
                 return pooledObjList[i];
             }
         }

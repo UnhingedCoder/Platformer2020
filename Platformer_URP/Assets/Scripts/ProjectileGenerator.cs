@@ -5,18 +5,22 @@ using UnityEngine;
 public class ProjectileGenerator : MonoBehaviour
 {
     public Vector3 directionToShoot;
+    public float delay;
     public float rateOfFire;
-    public ObjectPooler objPooler;
+    public ParticleSystem ps_Flare;
+    public string objectPoolerName;
+
+    private ObjectPooler _objectPooler;
 
     private void Awake()
     {
-        objPooler = FindObjectOfType<ObjectPooler>();
+        _objectPooler = GameObject.Find("ObjectPoolers/" + objectPoolerName).GetComponent<ObjectPooler>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("LaunchProjectile", 0f, rateOfFire);
+        InvokeRepeating("LaunchProjectile", delay, rateOfFire);
     }
 
     // Update is called once per frame
@@ -27,10 +31,18 @@ public class ProjectileGenerator : MonoBehaviour
 
     void LaunchProjectile()
     {
-        ProjectileController projectile = objPooler.GetPooledObject(this.transform).GetComponent<ProjectileController>();
-        projectile.SetupProjectile(directionToShoot);
+        if (_objectPooler == null)
+            return;
+
+        Projectile projectile = _objectPooler.GetPooledObject(this.transform.position).GetComponent<Projectile>();
+
+        if (projectile == null)
+            return;
+
         projectile.gameObject.SetActive(true);
-        if(projectile != null)
-            Debug.Log("Launching projectile");
+        projectile.SetupProjectile(directionToShoot);
+        ps_Flare.gameObject.SetActive(true);
+        ps_Flare.Stop();
+        ps_Flare.Play();
     }
 }

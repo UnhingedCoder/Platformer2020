@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8456050224404736688}
   - component: {fileID: 7823888740271426721}
   - component: {fileID: 4173524374521432957}
-  - component: {fileID: 5591073202077202846}
   m_Layer: 0
   m_Name: BrickBurst
   m_TagString: Untagged
@@ -43,7 +42,7 @@ ParticleSystem:
   serializedVersion: 6
   lengthInSec: 1
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 2
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
@@ -4813,15 +4812,3 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!114 &5591073202077202846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5678039347113422338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6a476e9006dcf64e8ef4f32730b7336, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
