@@ -29,7 +29,7 @@ public class ProjectileController : MonoBehaviour
     public void SetupProjectile(Vector3 targetDir)
     {
         this.transform.rotation = Quaternion.Euler(DetectProjectileFacingDirection(targetDir));
-        _rigidBody.velocity = targetDir * speed;
+        _rigidBody.velocity = new Vector3(targetDir.x * speed, targetDir.y * speed, 0);
     }
     Vector3 DetectProjectileFacingDirection(Vector3 direction)
     {
