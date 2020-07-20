@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public List<float> scaleValList = new List<float>();
-    public List<float> speedValList = new List<float>();
     public int index;
     public GameObject groundBurstFX;
 
@@ -47,7 +46,6 @@ public class PlayerController : MonoBehaviour
                 theScale.x *= -1;
             }
             transform.localScale = theScale;
-            playerMovement.runSpeed = speedValList[index];
         }
     }
 

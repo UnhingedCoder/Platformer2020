@@ -268,6 +268,11 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
+    public void SetCharacterMass(float val)
+    {
+        m_Rigidbody2D.mass = val;
+    }
+
     public void MakeInvulnerable()
     {
         m_invulnerable = true;
