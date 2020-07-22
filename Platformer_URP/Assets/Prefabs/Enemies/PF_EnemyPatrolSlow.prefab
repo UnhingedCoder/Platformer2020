@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2883581264136499806}
   - component: {fileID: 2883581264136499809}
-  - component: {fileID: 6109682840223412373}
   m_Layer: 0
   m_Name: HeadCheck
   m_TagString: EnemyHead
@@ -58,19 +57,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 0.08182317}
   m_EdgeRadius: 0
---- !u!114 &6109682840223412373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2883581264136499807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b2edf77d2b40004585754bfdf3854cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  burstFX: {fileID: 7322271263543802295, guid: 9db28ba92ee8c9c4cb2601f59715cc9d, type: 3}
 --- !u!1 &2883581264741952508
 GameObject:
   m_ObjectHideFlags: 0
@@ -84,6 +70,7 @@ GameObject:
   - component: {fileID: 2883581264741952510}
   - component: {fileID: 2883581264741952509}
   - component: {fileID: 8703516091920068619}
+  - component: {fileID: -8696332764714546167}
   m_Layer: 10
   m_Name: PF_EnemyPatrolSlow
   m_TagString: Enemy
@@ -226,6 +213,22 @@ MonoBehaviour:
   distance: 1
   groundDetection: {fileID: 8703516092121825910}
   wallDetection: {fileID: 8703516092512933730}
+--- !u!114 &-8696332764714546167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2883581264741952508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54ceced8861b84d9084017e2a3852919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ps_damageTaken: {fileID: 7322271263543802295, guid: 9db28ba92ee8c9c4cb2601f59715cc9d,
+    type: 3}
+  totalHealth: 1
+  currentHealth: 0
 --- !u!1 &8703516091004248460
 GameObject:
   m_ObjectHideFlags: 0

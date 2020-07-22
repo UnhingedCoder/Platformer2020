@@ -8,14 +8,14 @@ public class PlayerController : MonoBehaviour
     public int index;
     public GameObject groundBurstFX;
 
-    [HideInInspector] public UnitController unit;
+    [HideInInspector] public PlayerUnitController unit;
     [HideInInspector] public PlayerMovement playerMovement;
     [HideInInspector] public PlayerViewController playerView;
     [HideInInspector] public PlayerAudioController playerAudio;
 
     private void Awake()
     {
-        unit = GetComponent<UnitController>();
+        unit = GetComponent<PlayerUnitController>();
         playerMovement = GetComponent<PlayerMovement>();
         playerView = GetComponent<PlayerViewController>();
         playerAudio = GetComponent<PlayerAudioController>();

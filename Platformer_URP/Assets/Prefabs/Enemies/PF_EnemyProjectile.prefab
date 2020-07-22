@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 5797917880809081670}
   - component: {fileID: 52855432332578992}
   - component: {fileID: -5377627864703973670}
+  - component: {fileID: -4545810150737270311}
   m_Layer: 10
   m_Name: PF_EnemyProjectile
   m_TagString: Enemy
@@ -358,10 +359,26 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   xMagnitude: 0.4
-  distance: 10
+  distance: 8
   fireDuration: 0.01
   noFireDuration: 2
   _projectileGenerator: {fileID: 1477191220}
+--- !u!114 &-4545810150737270311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5797917880809081671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54ceced8861b84d9084017e2a3852919, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ps_damageTaken: {fileID: 7322271263543802295, guid: 9db28ba92ee8c9c4cb2601f59715cc9d,
+    type: 3}
+  totalHealth: 1
+  currentHealth: 0
 --- !u!1 &5797917881416766180
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,7 +389,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5797917881416766181}
   - component: {fileID: 5797917881416766170}
-  - component: {fileID: 3223216506543820846}
   m_Layer: 10
   m_Name: HeadCheck
   m_TagString: EnemyHead
@@ -420,19 +436,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 0.08182317}
   m_EdgeRadius: 0
---- !u!114 &3223216506543820846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5797917881416766180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b2edf77d2b40004585754bfdf3854cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  burstFX: {fileID: 7322271263543802295, guid: 9db28ba92ee8c9c4cb2601f59715cc9d, type: 3}
 --- !u!1 &9197451889636032834
 GameObject:
   m_ObjectHideFlags: 0

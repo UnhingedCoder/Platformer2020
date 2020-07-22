@@ -1,11 +1,10 @@
 ﻿<Properties StartupConfiguration="{44012533-5A6B-9451-3242-D77D4A92E28E}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Player/CharacterController2D.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Player/PlayerUnitController.cs">
     <Files>
-      <File FileName="Assets/Scripts/Player/PlayerController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Player/PlayerMovement.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Unit.cs" Line="9" Column="1" />
+      <File FileName="Assets/Scripts/Player/UnitController.cs" Line="12" Column="1" />
+      <File FileName="Assets/Scripts/Enemy/EnemyUnitController.cs" Line="9" Column="6" />
       <File FileName="Assets/Scripts/Player/StompController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Player/UnitController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Player/CharacterController2D.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,8 +12,9 @@
           <Node name="Platformer_URP" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
+                <Node name="Enemy" expanded="True" />
                 <Node name="Player" expanded="True">
-                  <Node name="CharacterController2D.cs" selected="True" />
+                  <Node name="PlayerUnitController.cs" selected="True" />
                 </Node>
               </Node>
             </Node>
@@ -25,7 +25,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="2ea4c065-2fe3-4c2a-8a3c-9919efabed3a" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="d8cba401-df69-4278-b4ad-c52a0756d296" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

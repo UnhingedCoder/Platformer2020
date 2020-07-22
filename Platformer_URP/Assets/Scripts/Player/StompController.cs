@@ -21,10 +21,11 @@ public class StompController : MonoBehaviour
             if (!player.playerMovement.controller.Invulnerable)
             {
                 Debug.Log(", and invulnerable");
-                GameObject fx = Instantiate(collision.transform.GetComponent<EnemyHeadController>().burstFX.gameObject, new Vector3(this.transform.position.x, this.transform.position.y, 0), collision.transform.GetComponent<EnemyHeadController>().burstFX.transform.rotation);
+                EnemyUnitController enemyUnit = collision.transform.parent.GetComponent<EnemyUnitController>();
+                GameObject fx = Instantiate(enemyUnit.ps_damageTaken.gameObject, new Vector3(this.transform.position.x, this.transform.position.y, 0), enemyUnit.ps_damageTaken.transform.rotation);
+                enemyUnit.TakeDamage(1f);
                 fx.transform.localScale = new Vector3(1, 1, 1);
                 e_OnStomp.Invoke();
-                Destroy(collision.transform.parent.gameObject);
             }
         }
     }
