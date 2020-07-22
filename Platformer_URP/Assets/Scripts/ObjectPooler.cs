@@ -15,12 +15,6 @@ public class ObjectPooler : MonoBehaviour
         CreatePooledObjects();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void CreatePooledObjects()
     {
         pooledObjList = new List<GameObject>();

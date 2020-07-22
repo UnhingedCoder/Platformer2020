@@ -73,8 +73,9 @@
     <Compile Include="Assets\Scripts\CheckpointController.cs" />
     <Compile Include="Assets\Scripts\DestroyParticles.cs" />
     <Compile Include="Assets\Scripts\DetectionObstacleController.cs" />
-    <Compile Include="Assets\Scripts\EnemyHeadController.cs" />
-    <Compile Include="Assets\Scripts\EnemyPatrolController.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyHeadController.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyPatrolController.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyProjectileController.cs" />
     <Compile Include="Assets\Scripts\FlameController.cs" />
     <Compile Include="Assets\Scripts\HUDController.cs" />
     <Compile Include="Assets\Scripts\HealthPickUpController.cs" />
@@ -656,6 +657,9 @@
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
       <HintPath>E:/Work 2020/Platformer_2020/Platformer_URP/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VisualEffectGraph.Runtime">
+      <HintPath>E:/Work 2020/Platformer_2020/Platformer_URP/Library/ScriptAssemblies/Unity.VisualEffectGraph.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/Work 2020/Platformer_2020/Platformer_URP/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -688,6 +692,9 @@
     </Reference>
     <Reference Include="com.unity.cinemachine.editor">
       <HintPath>E:/Work 2020/Platformer_2020/Platformer_URP/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualEffectGraph.Editor">
+      <HintPath>E:/Work 2020/Platformer_2020/Platformer_URP/Library/ScriptAssemblies/Unity.VisualEffectGraph.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
       <HintPath>E:/Work 2020/Platformer_2020/Platformer_URP/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>

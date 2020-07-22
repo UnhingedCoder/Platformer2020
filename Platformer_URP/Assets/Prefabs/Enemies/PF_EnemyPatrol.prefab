@@ -224,6 +224,7 @@ MonoBehaviour:
     m_Bits: 256
   speed: 3
   distance: 1
+  canMove: 1
   groundDetection: {fileID: 8526321935878347647}
   wallDetection: {fileID: 8526321935738867307}
 --- !u!1 &8526321934831679621

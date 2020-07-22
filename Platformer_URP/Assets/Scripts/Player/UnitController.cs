@@ -21,11 +21,6 @@ public class UnitController : MonoBehaviour
         currentHealth = totalHealth;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public void TakeDamage(float dmg)
     {
         if ((currentHealth - dmg) > 0)

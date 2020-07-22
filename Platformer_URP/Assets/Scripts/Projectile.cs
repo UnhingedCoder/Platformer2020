@@ -18,17 +18,6 @@ public class Projectile : MonoBehaviour
         _objectPooler = GameObject.Find("ObjectPoolers/" + objectPoolerName).GetComponent<ObjectPooler>();
         _particleObjectPooler = GameObject.Find("ObjectPoolers/" + particleObjectPoolerName).GetComponent<ObjectPooler>();
     }
-        // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void SetupProjectile(Vector3 targetDir)
     {
@@ -44,6 +33,7 @@ public class Projectile : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Hit " + collision.gameObject.name);
         _objectPooler.DestroyPooledObject(this.gameObject);
 
         Vector3 offsetPos = new Vector3(this.transform.position.x - 0.5f, this.transform.position.y, 0);

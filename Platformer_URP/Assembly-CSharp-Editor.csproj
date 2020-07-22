@@ -651,6 +651,9 @@
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
       <HintPath>E:/Work 2020/Platformer_2020/Platformer_URP/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VisualEffectGraph.Runtime">
+      <HintPath>E:/Work 2020/Platformer_2020/Platformer_URP/Library/ScriptAssemblies/Unity.VisualEffectGraph.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/Work 2020/Platformer_2020/Platformer_URP/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -683,6 +686,9 @@
     </Reference>
     <Reference Include="com.unity.cinemachine.editor">
       <HintPath>E:/Work 2020/Platformer_2020/Platformer_URP/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualEffectGraph.Editor">
+      <HintPath>E:/Work 2020/Platformer_2020/Platformer_URP/Library/ScriptAssemblies/Unity.VisualEffectGraph.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
       <HintPath>E:/Work 2020/Platformer_2020/Platformer_URP/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>

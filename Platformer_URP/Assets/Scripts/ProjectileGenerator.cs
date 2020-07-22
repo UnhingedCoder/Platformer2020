@@ -5,6 +5,7 @@ using UnityEngine;
 public class ProjectileGenerator : MonoBehaviour
 {
     public Vector3 directionToShoot;
+    public bool fireOnStart;
     public float delay;
     public float rateOfFire;
     public ParticleSystem ps_Flare;
@@ -20,16 +21,11 @@ public class ProjectileGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("LaunchProjectile", delay, rateOfFire);
+        if(fireOnStart)
+            InvokeRepeating("LaunchProjectile", delay, rateOfFire);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void LaunchProjectile()
+    public void LaunchProjectile()
     {
         if (_objectPooler == null)
             return;

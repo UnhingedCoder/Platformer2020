@@ -9,8 +9,6 @@ public class FlameController : MonoBehaviour
 
     public float flameDuration;
     float flameTime;
-
-
     public float noFlameDuration;
     float noFlameTime;
 

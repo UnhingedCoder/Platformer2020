@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionToShoot: {x: -1, y: 0, z: 0}
+  fireOnStart: 1
   delay: 0
   rateOfFire: 4
   ps_Flare: {fileID: 1412303603025336357}

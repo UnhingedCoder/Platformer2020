@@ -26,11 +26,6 @@ public class PlayerController : MonoBehaviour
         CheckHealth();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public void CheckHealth()
     {
         index = (int)unit.currentHealth - 1;
