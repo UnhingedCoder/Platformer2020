@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class EnemyUnitController : Unit
 {
+    public string objectPoolerName;
+    public GameObject orb;
+    private ObjectPooler _objectPooler;
+
+    private void Awake()
+    {
+        _objectPooler = GameObject.Find("ObjectPoolers/" + objectPoolerName).GetComponent<ObjectPooler>();
+    }
+
     public void TakeDamage(float dmg)
     {
         if ((currentHealth - dmg) > 0)
@@ -17,12 +26,20 @@ public class EnemyUnitController : Unit
         else
         {
             currentHealth = 0;
+            Vector2 spawnPos = new Vector2(this.transform.position.x + (this.transform.localScale.x * -1) , this.transform.position.y + 1f);
+            orb = _objectPooler.GetPooledObject(spawnPos);
+            orb.SetActive(true);
+
             this.gameObject.SetActive(false);
+
         }
     }
 
     public void Heal(float health)
     {
+        if (currentHealth >= totalHealth)
+            return;
+
         if ((currentHealth + health) > totalHealth)
             currentHealth = totalHealth;
         else

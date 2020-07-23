@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 public class PlayerUnitController : Unit
 {
-    public ParticleSystem ps_damageTaken;
-
     public UnityEvent e_HealthChanged;
     public UnityEvent e_HealRegained;
 
@@ -25,16 +23,22 @@ public class PlayerUnitController : Unit
         {
             currentHealth = 0;
         }
-
         e_HealthChanged.Invoke();
     }
 
     public void Heal(float health)
     {
+        if (currentHealth >= totalHealth)
+            return;
+
         if ((currentHealth + health) > totalHealth)
             currentHealth = totalHealth;
         else
             currentHealth += health;
+
+        ps_HealUp.gameObject.SetActive(true);
+        ps_HealUp.Stop();
+        ps_HealUp.Play();
 
         e_HealthChanged.Invoke();
         e_HealRegained.Invoke();

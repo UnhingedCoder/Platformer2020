@@ -229,6 +229,7 @@ MonoBehaviour:
     type: 3}
   totalHealth: 1
   currentHealth: 0
+  objectPoolerName: OrbPooler
 --- !u!1 &8703516091004248460
 GameObject:
   m_ObjectHideFlags: 0

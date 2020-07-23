@@ -21,9 +21,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-#if UNITY_EDITOR
+#if UNITY_EDITOR || UNITY_STANDALONE_WIN
         //if (Input.GetAxisRaw("Horizontal") != 0)
-            dir = Input.GetAxisRaw("Horizontal");
+        dir = Input.GetAxisRaw("Horizontal");
 
 #elif UNITY_ANDROID
         //if (joystick.Horizontal != 0)

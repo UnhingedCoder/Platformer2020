@@ -5,6 +5,7 @@ using UnityEngine;
 public class Unit : MonoBehaviour
 {
     public ParticleSystem ps_damageTaken;
+    public ParticleSystem ps_HealUp;
 
     public float totalHealth;
     public float currentHealth;
