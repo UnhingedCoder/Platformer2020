@@ -22,6 +22,7 @@ public class EnemyProjectileController : MonoBehaviour
     {
         _enemyPatrol = this.GetComponent<EnemyPatrolController>();
     }
+
     // Start is called before the first frame update
     void Start()
     {

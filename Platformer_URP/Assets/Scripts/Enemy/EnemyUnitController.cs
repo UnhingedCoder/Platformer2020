@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyUnitController : Unit
 {
+    public float knockbackForce;
     public bool invulnerable;
     public float invulnerabliltyDuration;
     private float invulnerabilityTime;
@@ -12,9 +13,11 @@ public class EnemyUnitController : Unit
     public GameObject orb;
     private ObjectPooler _objectPooler;
     private Animator anim;
+    private PlayerController player;
 
     private void Awake()
     {
+        player = FindObjectOfType<PlayerController>();
         _objectPooler = GameObject.Find("ObjectPoolers/" + objectPoolerName).GetComponent<ObjectPooler>();
         anim = GetComponent<Animator>();
     }
@@ -48,6 +51,16 @@ public class EnemyUnitController : Unit
             currentHealth -= dmg;
             invulnerabilityTime = invulnerabliltyDuration;
             invulnerable = true;
+
+            if (player.transform.position.x < this.transform.position.x)
+            {
+                this.GetComponent<Rigidbody2D>().velocity = new Vector2(knockbackForce, knockbackForce);
+            }
+            else
+            {
+                this.GetComponent<Rigidbody2D>().velocity = new Vector2(-knockbackForce, knockbackForce);
+            }
+
             if (anim)
                 anim.SetTrigger("Invulnerable");
 
