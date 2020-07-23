@@ -44,7 +44,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.04047984}
+  m_Offset: {x: 0, y: 0.023977682}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -55,7 +55,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.08182317}
+  m_Size: {x: 0.6, y: 0.114827484}
   m_EdgeRadius: 0
 --- !u!1 &2782666586733769461
 GameObject:
@@ -231,6 +231,9 @@ MonoBehaviour:
   ps_HealUp: {fileID: 0}
   totalHealth: 1
   currentHealth: 0
+  knockbackForce: 0
+  invulnerable: 0
+  invulnerabliltyDuration: 0
   objectPoolerName: OrbPooler
   orb: {fileID: 0}
 --- !u!1 &8526321934831679621
@@ -278,7 +281,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.025968313}
+  m_Offset: {x: -0.0018348694, y: -0.0052022934}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -289,7 +292,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5197296, y: 0.5009141}
+  m_Size: {x: 0.48672485, y: 0.43857288}
   m_EdgeRadius: 0
 --- !u!114 &8526321934831679623
 MonoBehaviour:

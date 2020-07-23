@@ -12,6 +12,7 @@ public class SaveManager : MonoBehaviour
     public float maxOrbs;
 
     public Image saveBar;
+    public GameObject indicator;
 
     public TextMeshProUGUI saveInfo;
     private PlayerController player;
@@ -30,6 +31,14 @@ public class SaveManager : MonoBehaviour
     private void Update()
     {
         saveBar.fillAmount = (float)orbCount.RuntimeValue / maxOrbs;
+
+        if (indicator != null)
+        {
+            if (orbCount.RuntimeValue >= maxOrbs)
+                indicator.SetActive(true);
+            else
+                indicator.SetActive(false);
+        }
     }
 
     public void AddOrbs(int val)

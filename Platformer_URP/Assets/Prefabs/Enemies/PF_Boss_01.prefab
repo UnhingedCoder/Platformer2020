@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524858966591621334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1, z: 0}
+  m_LocalPosition: {x: 0.765, y: 1.616, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 524858967231406760}
@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ea601ee65464d098a6a3e71fab0bc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  directionToShoot: {x: 1, y: 0.5, z: 0}
+  directionToShoot: {x: 1, y: 1, z: 0}
   fireOnStart: 0
   delay: 0
   rateOfFire: 0
@@ -168,7 +168,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.021383516}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -179,7 +179,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.86, y: 0.04}
+  m_Size: {x: 0.86, y: 0.082767025}
   m_EdgeRadius: 0
 --- !u!1 &524858967136695213
 GameObject:
@@ -207,7 +207,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 524858967136695213}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 1, y: 1, z: 0}
+  m_LocalPosition: {x: 0.739, y: 1.573, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 524858967231406760}
@@ -5200,9 +5200,9 @@ MonoBehaviour:
   ps_HealUp: {fileID: 0}
   totalHealth: 5
   currentHealth: 0
-  knockbackForce: 3
+  knockbackForce: 8
   invulnerable: 0
-  invulnerabliltyDuration: 3
+  invulnerabliltyDuration: 1.5
   objectPoolerName: OrbPooler
   orb: {fileID: 0}
 --- !u!114 &524858967231406756
@@ -5240,10 +5240,11 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
+  stage: 0
+  projectilesToShoot: 0
   detectDistance: 100
   attackRange: 10
   playerTarget: {fileID: 0}
-  _enemyProjectile: {fileID: 0}
 --- !u!114 &524858967231406755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5260,6 +5261,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   xMagnitude:
+  - 0.1
+  - 0.2
+  - 0.3
   - 0.4
   - 0.5
   - 0.6

@@ -40,7 +40,7 @@ public class EnemyProjectileController : MonoBehaviour
         if (playerInfo)
         {
             _enemyPatrol.CanMove = false;
-            FireProjectiles();
+            FireProjectiles(1);
         }
         else
         {
@@ -49,13 +49,13 @@ public class EnemyProjectileController : MonoBehaviour
         }
     }
 
-    public void FireProjectiles()
+    public void FireProjectiles(int iterations)
     {
         if (fireTime <= fireDuration)
         {
             fireTime += Time.deltaTime;
             noFireTime = 0;
-            for (int i = 0; i < xMagnitude.Length; i++)
+            for (int i = 0; i < iterations; i++)
             {
                 Debug.Log("Firing Projectile at " + xMagnitude[i]);
                 _projectileGenerator.directionToShoot = new Vector2(_enemyPatrol.Dir * xMagnitude[i], _projectileGenerator.directionToShoot.y);
