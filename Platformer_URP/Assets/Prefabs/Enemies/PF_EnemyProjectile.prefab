@@ -362,7 +362,7 @@ MonoBehaviour:
   xMagnitude:
   - 0.4
   distance: 8
-  overrideThis: 0
+  overrideThis: 1
   fireDuration: 0.01
   noFireDuration: 2
   _projectileGenerator: {fileID: 1477191220}

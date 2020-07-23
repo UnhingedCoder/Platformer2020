@@ -18,8 +18,12 @@ public class Boss_Attack : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        enemyBoss._enemyProjectile.FireProjectiles();
-        if (Vector2.Distance(enemyBoss.playerTarget.transform.position, enemyBoss.transform.position) >= enemyBoss.attackRange)
+        enemyPatrol.ChangeFacingDirection(enemyBoss.DetectPlayerDirection());
+        if (Vector2.Distance(enemyBoss.playerTarget.transform.position, enemyBoss.transform.position) <= enemyBoss.attackRange)
+        {
+            enemyBoss._enemyProjectile.FireProjectiles();
+        }
+        else
         {
             animator.SetTrigger("Chase");
         }

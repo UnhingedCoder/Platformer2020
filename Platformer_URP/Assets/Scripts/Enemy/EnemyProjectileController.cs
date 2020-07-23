@@ -56,6 +56,7 @@ public class EnemyProjectileController : MonoBehaviour
             noFireTime = 0;
             for (int i = 0; i < xMagnitude.Length; i++)
             {
+                Debug.Log("Firing Projectile at " + xMagnitude[i]);
                 _projectileGenerator.directionToShoot = new Vector2(_enemyPatrol.Dir * xMagnitude[i], _projectileGenerator.directionToShoot.y);
                 _projectileGenerator.LaunchProjectile();
             }
