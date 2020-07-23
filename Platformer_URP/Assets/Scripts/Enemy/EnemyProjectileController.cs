@@ -5,8 +5,10 @@ using UnityEngine;
 public class EnemyProjectileController : MonoBehaviour
 {
     public LayerMask playerLayer;
-    public float xMagnitude;
+    public float[] xMagnitude;
     public float distance;
+
+    public bool overrideThis;
 
     public float fireDuration;
     float fireTime;
@@ -23,12 +25,15 @@ public class EnemyProjectileController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        fireTime = 0;
+        ResetFireTime();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!overrideThis)
+            return;
+
         RaycastHit2D playerInfo = Physics2D.Raycast(this.transform.position, new Vector2(_enemyPatrol.Dir, 0), distance, playerLayer);
 
         if (playerInfo)
@@ -43,14 +48,17 @@ public class EnemyProjectileController : MonoBehaviour
         }
     }
 
-    void FireProjectiles()
+    public void FireProjectiles()
     {
-        _projectileGenerator.directionToShoot = new Vector2(_enemyPatrol.Dir * xMagnitude, _projectileGenerator.directionToShoot.y);
         if (fireTime <= fireDuration)
         {
             fireTime += Time.deltaTime;
             noFireTime = 0;
-            _projectileGenerator.LaunchProjectile();
+            for (int i = 0; i < xMagnitude.Length; i++)
+            {
+                _projectileGenerator.directionToShoot = new Vector2(_enemyPatrol.Dir * xMagnitude[i], _projectileGenerator.directionToShoot.y);
+                _projectileGenerator.LaunchProjectile();
+            }
         }
         else
         {
@@ -60,8 +68,13 @@ public class EnemyProjectileController : MonoBehaviour
             }
             else
             {
-                fireTime = 0;
+                ResetFireTime();
             }
         }
+    }
+
+    public void ResetFireTime()
+    {
+        fireTime = 0;
     }
 }

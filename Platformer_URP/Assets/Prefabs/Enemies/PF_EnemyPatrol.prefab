@@ -211,6 +211,7 @@ MonoBehaviour:
     m_Bits: 256
   speed: 3
   distance: 1
+  moveOnSpawn: 1
   groundDetection: {fileID: 8526321935878347647}
   wallDetection: {fileID: 8526321935738867307}
 --- !u!114 &7686003585993425348
@@ -227,9 +228,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ps_damageTaken: {fileID: 7322271263543802295, guid: 9db28ba92ee8c9c4cb2601f59715cc9d,
     type: 3}
+  ps_HealUp: {fileID: 0}
   totalHealth: 1
   currentHealth: 0
   objectPoolerName: OrbPooler
+  orb: {fileID: 0}
 --- !u!1 &8526321934831679621
 GameObject:
   m_ObjectHideFlags: 0

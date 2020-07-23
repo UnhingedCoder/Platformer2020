@@ -341,6 +341,7 @@ MonoBehaviour:
     m_Bits: 256
   speed: 3
   distance: 1
+  moveOnSpawn: 1
   groundDetection: {fileID: 52855431595942605}
   wallDetection: {fileID: 52855431722809305}
 --- !u!114 &-5377627864703973670
@@ -358,8 +359,10 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
-  xMagnitude: 0.4
+  xMagnitude:
+  - 0.4
   distance: 8
+  overrideThis: 0
   fireDuration: 0.01
   noFireDuration: 2
   _projectileGenerator: {fileID: 1477191220}
@@ -377,9 +380,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ps_damageTaken: {fileID: 7322271263543802295, guid: 9db28ba92ee8c9c4cb2601f59715cc9d,
     type: 3}
+  ps_HealUp: {fileID: 0}
   totalHealth: 1
   currentHealth: 0
   objectPoolerName: OrbPooler
+  orb: {fileID: 0}
 --- !u!1 &5797917881416766180
 GameObject:
   m_ObjectHideFlags: 0

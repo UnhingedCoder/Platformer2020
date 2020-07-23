@@ -7,6 +7,7 @@ public class EnemyPatrolController : MonoBehaviour
     public LayerMask groundLayer;
     public float speed;
     public float distance;
+    public bool moveOnSpawn;
     private bool canMove;
 
     private float dir = 1;
@@ -27,7 +28,7 @@ public class EnemyPatrolController : MonoBehaviour
 
     private void Start()
     {
-        canMove = true;
+        canMove = moveOnSpawn;
     }
 
     private void Update()
@@ -39,23 +40,20 @@ public class EnemyPatrolController : MonoBehaviour
         RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance, groundLayer);
         RaycastHit2D wallInfo = Physics2D.Raycast(wallDetection.position, new Vector2(dir, 0), 0.25f, groundLayer);
 
-        Debug.Log(groundInfo.collider);
         if (!groundInfo.collider || wallInfo.collider)
         {
             if (movingRight == true)
             {
-                dir = -1;
-                transform.localScale = new Vector2(-1, 1);
-                movingRight = false;
+                //Debug.Log("Moving left now");
+                ChangeFacingDirection(-1);
             }
             else
             {
-                dir = 1;
-                transform.localScale = new Vector2(1, 1);
-                movingRight = true;
+                //Debug.Log("Moving right now");
+                ChangeFacingDirection(1);
             }
         }
-
+        //Debug.Log(this.gameObject.name + " moving towards: " + dir);
         _rigidBody.velocity = new Vector2(dir * speed, _rigidBody.velocity.y);
     }
 
@@ -74,4 +72,18 @@ public class EnemyPatrolController : MonoBehaviour
             this.transform.SetParent(null);
         }
     }
+
+    public void ChangeFacingDirection(float val)
+    {
+        dir = val;
+
+        transform.localScale = new Vector2(val, 1);
+
+        if (val == 1)
+            movingRight = true;
+        else
+            movingRight = false;
+    }
+
+
 }

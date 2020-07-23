@@ -26,8 +26,8 @@ public class EnemyUnitController : Unit
         else
         {
             currentHealth = 0;
-            Vector2 spawnPos = new Vector2(this.transform.position.x + (this.transform.localScale.x * -1) , this.transform.position.y + 1f);
-            orb = _objectPooler.GetPooledObject(spawnPos);
+            //Vector2 spawnPos = new Vector2(this.transform.position);
+            orb = _objectPooler.GetPooledObject(this.transform.position);
             orb.SetActive(true);
 
             this.gameObject.SetActive(false);
