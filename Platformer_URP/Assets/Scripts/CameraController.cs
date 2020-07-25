@@ -8,8 +8,14 @@ public class CameraController : MonoBehaviour
     public float shakeTime;
     public float amplitudeGain;
     public float frequencyGain;
-    float timer = 0f;
+    float shakeTimer = 0f;
     bool shakeCamera = false;
+
+    public int maxFOV;
+    public int minFOV;
+    float fovTimer;
+    public bool increaseFOV = false;
+    public bool decreaseFOV = false;
     CinemachineVirtualCamera cinevCam;
 
     private void Awake()
@@ -29,12 +35,33 @@ public class CameraController : MonoBehaviour
         if (shakeCamera)
         {
             Noise(amplitudeGain, frequencyGain);
-            timer += Time.deltaTime;
-            if (timer > shakeTime)
+            shakeTimer += Time.deltaTime;
+            if (shakeTimer > shakeTime)
             {
                 shakeCamera = false;
-                timer = 0;
+                shakeTimer = 0;
                 Noise(0f, 0f);
+            }
+        }
+
+        if (increaseFOV)
+        {
+            FOVAdjustment(maxFOV);
+            fovTimer += (0.5f * Time.deltaTime);
+            if (cinevCam.m_Lens.OrthographicSize >= maxFOV)
+            {
+                increaseFOV = false;
+                fovTimer = 0;
+            }
+        }
+        else if (decreaseFOV)
+        {
+            FOVAdjustment(minFOV);
+            fovTimer += (0.5f * Time.deltaTime);
+            if (cinevCam.m_Lens.OrthographicSize <= minFOV)
+            {
+                decreaseFOV = false;
+                fovTimer = 0;
             }
         }
     }
@@ -48,5 +75,22 @@ public class CameraController : MonoBehaviour
     public void ShakeTheCamera()
     {
         shakeCamera = true;
+    }
+
+    public void FOVAdjustment(int targetFOV)
+    {
+        cinevCam.m_Lens.OrthographicSize = Mathf.Lerp(cinevCam.m_Lens.OrthographicSize, targetFOV, fovTimer);
+    }
+
+    public void IncreaseFOVAdjustment()
+    {
+        decreaseFOV = false;
+        increaseFOV = true;
+    }
+
+    public void DecreaseFOVAdjustment()
+    {
+        decreaseFOV = true;
+        increaseFOV = false;
     }
 }
