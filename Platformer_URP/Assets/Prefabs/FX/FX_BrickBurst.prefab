@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7823888740271426721}
   - component: {fileID: 4173524374521432957}
   m_Layer: 0
-  m_Name: BrickBurst
+  m_Name: FX_BrickBurst
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4786,9 +4786,9 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 2027520351
+  m_SortingLayer: 3
+  m_SortingOrder: 1
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0

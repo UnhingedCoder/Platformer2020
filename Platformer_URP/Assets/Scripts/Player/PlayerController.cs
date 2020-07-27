@@ -62,11 +62,9 @@ public class PlayerController : MonoBehaviour
 
     float GetJumpImpactMagnitude(Collision2D collision)
     {
-        Debug.Log("jumpImpactMagnitude");
         Vector2 impactVelocity = collision.relativeVelocity;
 
         float magnitude = Mathf.Max(0f, impactVelocity.magnitude - 1); Mathf.Max(0f, impactVelocity.magnitude - 1);
-        Debug.Log("jumpImpactMagnitude"+ magnitude);
         return magnitude;
     }
 

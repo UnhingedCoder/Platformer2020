@@ -262,9 +262,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 2027520351
+  m_SortingLayerID: 438838339
   m_SortingLayer: 2
-  m_SortingOrder: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: -458198448075040168, guid: 1f1803cf2fc26284489a629440e9c015,
     type: 3}
   m_Color: {r: 1, g: 0.3915094, b: 0.8821047, a: 1}
@@ -319,7 +319,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 027a0985a260bb94f810164eb9bc35ff, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1

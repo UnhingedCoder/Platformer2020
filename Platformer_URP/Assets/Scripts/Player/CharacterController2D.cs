@@ -15,7 +15,7 @@ public class CharacterController2D : MonoBehaviour
     [Range(0, 0.3f)] [SerializeField] private float m_MovementSmoothing = 0.05f;
 	[Range(0, 0.5f)] [SerializeField] private float m_WallRadius = 0.2f;
 	[SerializeField] private bool m_AirControl = false;
-    [SerializeField] private bool m_AllowDoubleJump = false;
+    [SerializeField] private BoolValue m_AllowDoubleJump;
     [SerializeField] private LayerMask m_WhatIsGround;
     [SerializeField] private Transform m_GroundCheck;
 	[SerializeField] private Transform m_WallCheck;
@@ -38,6 +38,7 @@ public class CharacterController2D : MonoBehaviour
     private float m_invulnerabiltyTime;
     private bool m_invulnerable = false;
     private bool m_CanDoubleJump = false;
+    private bool m_DoingDoubleJump = false;
     private Rigidbody2D m_Rigidbody2D;
     private bool m_FacingRight = true;
     private bool m_FacingUp = true;
@@ -50,7 +51,7 @@ public class CharacterController2D : MonoBehaviour
     public bool Invulnerable { get => m_invulnerable; set => m_invulnerable = value; }
     public bool CanMove { get => m_canMove; set => m_canMove = value; }
     public bool FacingRight { get => m_FacingRight; set => m_FacingRight = value; }
-
+    public bool CanDoubleJump { get => m_CanDoubleJump; set => m_CanDoubleJump = value; }
 
     public UnityEvent e_OnJump;
     public UnityEvent e_OnLanding;
@@ -161,8 +162,8 @@ public class CharacterController2D : MonoBehaviour
             {
                 m_Rigidbody2D.AddForce(new Vector2(m_Rigidbody2D.velocity.x / 4, m_JumpForce * m_jumpScale));
 
-                if(m_AllowDoubleJump)
-                    m_CanDoubleJump = true;
+                if(m_AllowDoubleJump.RuntimeValue)
+                    CanDoubleJump = true;
 
                 m_jumpBufferCount = 0;
 
@@ -170,19 +171,34 @@ public class CharacterController2D : MonoBehaviour
             }
             else
             {
-                if (m_CanDoubleJump)
+                if (CanDoubleJump)
                 {
-                    m_CanDoubleJump = false;
-                    m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, 0);
-                    m_Rigidbody2D.AddForce(new Vector2(m_Rigidbody2D.velocity.x, m_DoubleJumpForce * m_jumpScale));
-
-                    ps_doubleJumpBlast.gameObject.SetActive(true);
-                    ps_doubleJumpBlast.Stop();
-                    ps_doubleJumpBlast.Play();
+                    Time.timeScale = 0f;
+                    m_DoingDoubleJump = true;
                 }
             }
         }
 	}
+
+    public void DoubleJump(Vector2 dir)
+    {
+        if (m_DoingDoubleJump)
+        {
+            m_Rigidbody2D.velocity = new Vector2(0, 0);
+            float jumpForce = (float)m_DoubleJumpForce * 1.2f;
+            if (dir.x <= 0.5 && dir.x >= -0.5)
+                jumpForce = (float)m_DoubleJumpForce/1.15f;
+
+            m_Rigidbody2D.AddForce(new Vector2(dir.x * jumpForce, dir.y * jumpForce));
+
+            ps_doubleJumpBlast.gameObject.SetActive(true);
+            ps_doubleJumpBlast.Stop();
+            ps_doubleJumpBlast.Play();
+
+            CanDoubleJump = false;
+            m_DoingDoubleJump = false;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -211,8 +227,9 @@ public class CharacterController2D : MonoBehaviour
 
     public void BreakJump()
     {
-        if(m_Rigidbody2D.velocity.y > 0)
-            m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y * 0.5f);
+        if (m_Rigidbody2D.velocity.y > 0)
+            m_Rigidbody2D.velocity = new Vector2(m_Rigidbody2D.velocity.x, m_Rigidbody2D.velocity.y * 0.6f);
+
     }
 
 

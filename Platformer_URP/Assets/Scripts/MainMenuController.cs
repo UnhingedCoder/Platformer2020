@@ -9,7 +9,11 @@ public class MainMenuController : MonoBehaviour
     public void OnNewGameClicked()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Level_01");
-        playerSpawnPos.runtimeValue = playerSpawnPos.initialValue;
+    }
+
+    public void OnContinueClicked()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Level_01");
     }
 
     public void OnExitClicked()

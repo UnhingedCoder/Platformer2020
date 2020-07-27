@@ -24,15 +24,6 @@ public class KnockbackController : MonoBehaviour
         {
             KnockbackPlayer(collision);
         }
-
-        if (destroySelf && burstFX != null)
-        {
-            this.gameObject.SetActive(false);
-            burstFX.transform.position = new Vector3(this.transform.position.x + burstOffset.x, this.transform.position.y + burstOffset.y, 0) ;
-            burstFX.gameObject.SetActive(true);
-            burstFX.Stop();
-            burstFX.Play();
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -40,6 +31,16 @@ public class KnockbackController : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             KnockbackPlayer(collision);
+        }
+
+
+        if (destroySelf && burstFX != null)
+        {
+            this.gameObject.SetActive(false);
+            burstFX.transform.position = new Vector3(this.transform.position.x + burstOffset.x, this.transform.position.y + burstOffset.y, 0);
+            burstFX.gameObject.SetActive(true);
+            burstFX.Stop();
+            burstFX.Play();
         }
     }
 

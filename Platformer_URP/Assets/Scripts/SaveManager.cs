@@ -8,6 +8,7 @@ public class SaveManager : MonoBehaviour
 {
     public IntValue orbCount;
     public VectorValue playerSpawnPos;
+    public BoolValue doubleJumpPowerUp;
 
     public float maxOrbs;
 
@@ -72,8 +73,9 @@ public class SaveManager : MonoBehaviour
 
     public void ResetGame()
     {
-        playerSpawnPos.runtimeValue = Vector3.zero;
-        orbCount.RuntimeValue = 0;
+        playerSpawnPos.runtimeValue = playerSpawnPos.initialValue;
+        orbCount.RuntimeValue = orbCount.initialValue;
+        doubleJumpPowerUp.RuntimeValue = doubleJumpPowerUp.initialValue;
     }
 
     IEnumerator ShowGameInfo(string infoText, float waitTime)

@@ -53,7 +53,7 @@ public class EnemyBossController : MonoBehaviour
         {
             for (int i = 0; i < hit.Length; i++)
             {
-                if (hit[i].collider != null)
+                if (hit[i].collider != null && hit[i].collider.CompareTag("Player"))
                 {
                     float dist = Vector3.Distance(this.transform.position, hit[i].collider.gameObject.transform.position);
                     if (dist < shortestDist)
