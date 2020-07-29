@@ -66,8 +66,8 @@ public class SaveManager : MonoBehaviour
         }
         else
         {
-            StopCoroutine(ShowGameInfo("Collect more orbs", 3f));
-            StartCoroutine(ShowGameInfo("Collect more orbs", 3f));
+            StopCoroutine(ShowGameInfo("Collect more souls", 3f));
+            StartCoroutine(ShowGameInfo("Collect more souls", 3f));
         }
     }
 

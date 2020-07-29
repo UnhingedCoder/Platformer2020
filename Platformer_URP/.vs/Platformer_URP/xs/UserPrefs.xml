@@ -1,19 +1,20 @@
 ﻿<Properties StartupConfiguration="{44012533-5A6B-9451-3242-D77D4A92E28E}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Player/PlayerViewController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UI/SaveManager.cs">
     <Files>
       <File FileName="Assets/Scripts/MainMenuController.cs" Line="11" Column="25" IsPinned="True" />
       <File FileName="Assets/Scripts/Unit.cs" Line="9" Column="1" />
       <File FileName="Assets/Scripts/Enemy/EnemyUnitController.cs" />
       <File FileName="Assets/Scripts/Player/StompController.cs" />
       <File FileName="Assets/Scripts/Enemy/EnemyProjectileController.cs" />
-      <File FileName="Assets/Scripts/ProjectileGenerator.cs" />
       <File FileName="Assets/Scripts/Player/PlayerController.cs" />
       <File FileName="Assets/Scripts/Player/PlayerMovement.cs" Line="69" Column="6" />
       <File FileName="Assets/Scripts/Player/CharacterController2D.cs" />
       <File FileName="Assets/Scripts/KnockbackController.cs" />
       <File FileName="Assets/Scripts/Enemy/EnemyPatrolController.cs" />
-      <File FileName="Assets/Scripts/LevelManager.cs" Line="8" Column="5" />
-      <File FileName="Assets/Scripts/Player/PlayerViewController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/LevelManager.cs" Line="41" Column="57" />
+      <File FileName="Assets/Scripts/Player/PlayerViewController.cs" Line="97" Column="41" />
+      <File FileName="Assets/Scripts/World/LevelLoader.cs" Line="18" Column="41" />
+      <File FileName="Assets/Scripts/UI/SaveManager.cs" Line="69" Column="59" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -22,9 +23,11 @@
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
                 <Node name="Enemy" expanded="True" />
-                <Node name="Player" expanded="True">
-                  <Node name="PlayerViewController.cs" selected="True" />
+                <Node name="Player" expanded="True" />
+                <Node name="UI" expanded="True">
+                  <Node name="SaveManager.cs" selected="True" />
                 </Node>
+                <Node name="World" expanded="True" />
               </Node>
             </Node>
           </Node>

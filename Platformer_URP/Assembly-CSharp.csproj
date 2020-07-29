@@ -113,10 +113,12 @@
     <Compile Include="Assets\Scripts\UI\SwipeDetector.cs" />
     <Compile Include="Assets\Scripts\World\CheckpointController.cs" />
     <Compile Include="Assets\Scripts\World\HealthPickUpController.cs" />
+    <Compile Include="Assets\Scripts\World\LevelLoader.cs" />
     <Compile Include="Assets\Scripts\World\OrbPickupController.cs" />
     <Compile Include="Assets\Scripts\World\ParallaxController.cs" />
     <Compile Include="Assets\Scripts\World\PlatformController.cs" />
     <Compile Include="Assets\Scripts\World\RevealAreaController.cs" />
+    <Compile Include="Assets\Scripts\World\SignboardController.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
