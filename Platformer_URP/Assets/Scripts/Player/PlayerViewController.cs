@@ -19,10 +19,13 @@ public class PlayerViewController : MonoBehaviour
 
     public UnityEvent e_OnDeath;
 
+    private LevelManager _lvlManger;
+
     private void Awake()
     {
         player = FindObjectOfType<PlayerController>();
-        anim = GetComponent<Animator>();    
+        anim = GetComponent<Animator>();
+        _lvlManger = FindObjectOfType<LevelManager>();
     }
 
     private void OnEnable()
@@ -91,6 +94,6 @@ public class PlayerViewController : MonoBehaviour
 
     public void OnDeathComplete()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        _lvlManger.ReloadCurrentScene();
     }
 }
