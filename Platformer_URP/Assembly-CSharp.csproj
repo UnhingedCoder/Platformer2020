@@ -85,7 +85,6 @@
     <Compile Include="Assets\Scripts\Enemy\EnemyUnitController.cs" />
     <Compile Include="Assets\Scripts\FlameController.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\HUDController.cs" />
     <Compile Include="Assets\Scripts\HealthPickUpController.cs" />
     <Compile Include="Assets\Scripts\Input\InputMaster.cs" />
     <Compile Include="Assets\Scripts\KnockbackController.cs" />
@@ -115,8 +114,9 @@
     <Compile Include="Assets\Scripts\ScriptableObjects\Signal.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\SignalListener.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\VectorValue.cs" />
-    <Compile Include="Assets\Scripts\SwipeDetector.cs" />
     <Compile Include="Assets\Scripts\TargetDetector.cs" />
+    <Compile Include="Assets\Scripts\UI\HUDController.cs" />
+    <Compile Include="Assets\Scripts\UI\SwipeDetector.cs" />
     <Compile Include="Assets\Scripts\Unit.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />

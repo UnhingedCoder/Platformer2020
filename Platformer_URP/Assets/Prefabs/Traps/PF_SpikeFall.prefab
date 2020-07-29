@@ -145,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 2
   knockbackDuration: 0.1
+  shouldDamageEnemies: 1
   destroySelf: 1
   burstOffset: {x: 0, y: 0.4}
   burstFX: {fileID: 5122724732154642079}

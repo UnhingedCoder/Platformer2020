@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 8703516091004248462}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -308,6 +308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   knockbackDuration: 0.1
+  shouldDamageEnemies: 0
   destroySelf: 0
   burstOffset: {x: 0, y: 0}
   burstFX: {fileID: 7322271263543802295, guid: 9db28ba92ee8c9c4cb2601f59715cc9d, type: 3}

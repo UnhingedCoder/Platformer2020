@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        dir = 0;
 #if UNITY_EDITOR || UNITY_STANDALONE_WIN
         //if (Input.GetAxisRaw("Horizontal") != 0)
         dir = joystickDirection.x;

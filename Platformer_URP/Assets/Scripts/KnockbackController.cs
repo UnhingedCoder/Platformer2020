@@ -6,6 +6,7 @@ public class KnockbackController : MonoBehaviour
 {
     public float damage;
     public float knockbackDuration;
+    public bool shouldDamageEnemies;
     public bool destroySelf;
     public Vector2 burstOffset;
     public ParticleSystem burstFX;
@@ -31,6 +32,17 @@ public class KnockbackController : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             KnockbackPlayer(collision);
+        }
+
+        if (shouldDamageEnemies)
+        {
+            if (collision.CompareTag("EnemyHead") || collision.CompareTag("Enemy"))
+            {
+                EnemyUnitController enemyUnit = collision.transform.parent.GetComponent<EnemyUnitController>();
+                GameObject fx = Instantiate(enemyUnit.ps_damageTaken.gameObject, new Vector3(this.transform.position.x, this.transform.position.y, 0), enemyUnit.ps_damageTaken.transform.rotation);
+                enemyUnit.TakeDamage(1f);
+                fx.transform.localScale = new Vector3(1, 1, 1);
+            }
         }
 
 
