@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Level01_Signboard_01
   m_EditorClassIdentifier: 
   dialogue:
-  - Yonder lies Gaulmar Hollows, the gateway to one of greatest civilisation ever
-    built.
+  - Traveller, heed these words very carefully. Beyond this point you enter the land
+    of King Teraron. Step across this threshold and obey our laws.
+  - Bear witness to the last and only civilisation...
+  - The Kingdom Of Oleania

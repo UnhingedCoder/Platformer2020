@@ -2,17 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SignboardController : MonoBehaviour
+public class SignboardController : Interactable
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<Dialogue> dialogueList = new List<Dialogue>();
+    //public string[] dialogue;
+    public string name;
+
+    int dialogueBlockIndex;
+    private void Start()
     {
-        
+        dialogueBlockIndex = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ShowSignboardInfo()
     {
-        
+        if (!playerNearby || interactionStarted)
+            return;
+
+        DialogueSystem.Instance.AddNewDialogue(dialogueList[dialogueBlockIndex].dialogue, name);
+        Debug.Log("Interacting with NPC");
+        if (dialogueBlockIndex < dialogueList.Count - 1)
+        {
+            dialogueBlockIndex++;
+        }
+        interactionStarted = true;
     }
 }

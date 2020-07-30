@@ -13,14 +13,20 @@ public class PlayerMovement : MonoBehaviour
     public float dir = 1f;
 
     public Vector2 joystickDirection;
+
+    public Signal interactingSignal;
+
     float dirBeforeStop = 1f;
     float horizontalMove = 0f;
     bool m_jump = false;
+    bool interactionAvailable = false;
+
+    public bool InteractionAvailable { get => interactionAvailable; set => interactionAvailable = value; }
 
     private void Awake()
     {
         controls = new InputMaster();
-        controls.Player.Jump.started += ctx => Jump();
+        controls.Player.Jump.started += ctx => ActionInput();
         controls.Player.Jump.canceled += ctx => JumpStop();
         controls.Player.Movement.performed += ctx => joystickDirection = ctx.ReadValue<Vector2>();
         controls.Player.Movement.canceled += ctx => joystickDirection =Vector2.zero;
@@ -58,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            Jump();
+            ActionInput();
         }
 
         if (Input.GetButtonUp("Jump"))
@@ -92,9 +98,16 @@ public class PlayerMovement : MonoBehaviour
         dir = direction.x;
     }
 
-    public void Jump()
+    public void ActionInput()
     {
-        m_jump = true;
+        if (interactionAvailable)
+        {
+            interactingSignal.Raise();
+        }
+        else
+        {
+            m_jump = true;
+        }
     }
 
     public void JumpStop()

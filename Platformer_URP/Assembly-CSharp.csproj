@@ -114,6 +114,7 @@
     <Compile Include="Assets\Scripts\UI\SwipeDetector.cs" />
     <Compile Include="Assets\Scripts\World\CheckpointController.cs" />
     <Compile Include="Assets\Scripts\World\HealthPickUpController.cs" />
+    <Compile Include="Assets\Scripts\World\Interactable.cs" />
     <Compile Include="Assets\Scripts\World\LevelLoader.cs" />
     <Compile Include="Assets\Scripts\World\OrbPickupController.cs" />
     <Compile Include="Assets\Scripts\World\ParallaxController.cs" />
