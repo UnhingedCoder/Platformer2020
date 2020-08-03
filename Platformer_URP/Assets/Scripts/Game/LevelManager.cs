@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    public float transitionTime = 1.3f;
+    public Animator anim;
+
     Scene currentScene;
     int currentSceneIndex;
     int nextSceneIndex;
@@ -26,18 +29,27 @@ public class LevelManager : MonoBehaviour
         
     }
 
+    IEnumerator LoadLevel(int sceneIndex)
+    {
+        anim.SetTrigger("NextLevel");
+
+        yield return new WaitForSeconds(transitionTime);
+
+        SceneManager.LoadScene(sceneIndex, LoadSceneMode.Single);
+    }
+
     public void ReloadCurrentScene()
     {
-        SceneManager.LoadScene(currentSceneIndex, LoadSceneMode.Single);
+        StartCoroutine(LoadLevel(currentSceneIndex));
     }
 
     public void LoadNextScene()
     {
-        SceneManager.LoadScene(nextSceneIndex, LoadSceneMode.Single);
+        StartCoroutine(LoadLevel(nextSceneIndex));
     }
 
     public void LoadMainMenu()
     {
-        SceneManager.LoadScene(0, LoadSceneMode.Single);
+        StartCoroutine(LoadLevel(0));
     }
 }

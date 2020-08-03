@@ -10,6 +10,7 @@ TagManager:
   - BreakableGround
   - MovingPlatform
   - Water
+  - Poison
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Player
   - Enemy
   - Detectors
-  - 
+  - Poison
   - 
   - 
   - 
@@ -50,11 +51,11 @@ TagManager:
   - name: Background
     uniqueID: 3831633385
     locked: 0
-  - name: Ground
-    uniqueID: 2027520351
-    locked: 0
   - name: Player
     uniqueID: 438838339
+    locked: 0
+  - name: Ground
+    uniqueID: 2027520351
     locked: 0
   - name: Foreground
     uniqueID: 3570281725

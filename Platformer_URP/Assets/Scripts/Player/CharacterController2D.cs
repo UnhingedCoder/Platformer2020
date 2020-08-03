@@ -23,6 +23,7 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private ParticleSystem ps_impactDust;
     [SerializeField] private ParticleSystem ps_doubleJumpBlast;
     [SerializeField] private ParticleSystem ps_waterImpact;
+    [SerializeField] private ParticleSystem ps_poisonImpact;
     private ParticleSystem.EmissionModule footstepsModule;
 
     const float k_GroundedRadius = 0.2f;
@@ -213,6 +214,13 @@ public class CharacterController2D : MonoBehaviour
             }
             m_InWater = true;
             Debug.Log("Stepped into water");
+        }
+        else if (collision.gameObject.CompareTag("Poison"))
+        {
+                ps_poisonImpact.gameObject.SetActive(true);
+                ps_poisonImpact.transform.position = new Vector2(collision.ClosestPoint(this.transform.position).x, collision.ClosestPoint(this.transform.position).y);
+                ps_poisonImpact.Stop();
+                ps_poisonImpact.Play();
         }
     }
 
