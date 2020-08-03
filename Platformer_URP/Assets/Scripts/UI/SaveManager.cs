@@ -8,6 +8,7 @@ public class SaveManager : MonoBehaviour
 {
     public IntValue orbCount;
     public VectorValue playerSpawnPos;
+    public BoolValue playerFacingDirection;
     public BoolValue doubleJumpPowerUp;
 
     public float maxOrbs;
@@ -58,9 +59,7 @@ public class SaveManager : MonoBehaviour
                 StartCoroutine(ShowGameInfo("Not on  ground", 2f));
                 return;
             }
-            player.unit.Heal(3f);
-            orbCount.RuntimeValue = 0;
-            playerSpawnPos.runtimeValue = player.transform.position;
+            SaveGame();
             StopCoroutine(ShowGameInfo("Game saved", 2f));
             StartCoroutine(ShowGameInfo("Game saved", 2f));
         }
@@ -69,6 +68,14 @@ public class SaveManager : MonoBehaviour
             StopCoroutine(ShowGameInfo("Collect more souls", 3f));
             StartCoroutine(ShowGameInfo("Collect more souls", 3f));
         }
+    }
+
+    public void SaveGame()
+    {
+        player.unit.Heal(3f);
+        orbCount.RuntimeValue = 0;
+        playerSpawnPos.runtimeValue = player.transform.position;
+        playerFacingDirection.RuntimeValue = player.playerMovement.controller.FacingRight;
     }
 
     public void ResetGame()

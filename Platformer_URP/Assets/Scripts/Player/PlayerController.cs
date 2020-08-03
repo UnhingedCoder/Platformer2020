@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public List<float> scaleValList = new List<float>();
     public int index;
+    public BoolValue facingDirection;
     public GameObject groundBurstFX;
 
     [HideInInspector] public PlayerUnitController unit;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerMovement.controller.FacingRight = facingDirection.RuntimeValue;
         CheckHealth();
     }
 

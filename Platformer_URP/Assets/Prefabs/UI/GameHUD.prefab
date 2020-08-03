@@ -544,6 +544,7 @@ GameObject:
   - component: {fileID: 1324249549}
   - component: {fileID: 1324249548}
   - component: {fileID: 1324249547}
+  - component: {fileID: 907933435}
   m_Layer: 5
   m_Name: LoadingTransition
   m_TagString: Untagged
@@ -627,6 +628,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!223 &907933435
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324249545}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 10
+  m_TargetDisplay: 0
 --- !u!1 &1382757628
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,6 +1408,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orbCount: {fileID: 11400000, guid: c5662cd1a4ebd7141b6ebb0345e857a2, type: 2}
   playerSpawnPos: {fileID: 11400000, guid: c34179f90df4d0b43a5baca146915ff1, type: 2}
+  playerFacingDirection: {fileID: 11400000, guid: b02e2f971e65c8c4297f83324fb459e8,
+    type: 2}
   doubleJumpPowerUp: {fileID: 11400000, guid: a5b7f9a453faf4040b435b2461edd3f3, type: 2}
   maxOrbs: 10
   saveBar: {fileID: 661467430454693221}

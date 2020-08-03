@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelLoader : MonoBehaviour
 {
     LevelManager _lvlManager;
-
+    public bool loadNextLvl;
     private void Awake()
     {
         _lvlManager = FindObjectOfType<LevelManager>();
@@ -15,7 +15,16 @@ public class LevelLoader : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            _lvlManager.LoadNextScene();
+            if (loadNextLvl)
+            {
+                _lvlManager.SetPostionForNextLevel();
+                _lvlManager.LoadNextScene();
+            }
+            else
+            {
+                _lvlManager.SetPostionForPrevLevel();
+                _lvlManager.LoadPrevScene();
+            }
         }
     }
 }

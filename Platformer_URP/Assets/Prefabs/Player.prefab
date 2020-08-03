@@ -19561,12 +19561,13 @@ MonoBehaviour:
   - 0.95
   - 1.15
   index: 0
+  facingDirection: {fileID: 11400000, guid: b02e2f971e65c8c4297f83324fb459e8, type: 2}
   groundBurstFX: {fileID: 5678039347113422338, guid: 166b6cc6f5c3543dab6b59f8f2358f8f,
     type: 3}
-  unit: {fileID: 0}
-  playerMovement: {fileID: 0}
-  playerView: {fileID: 0}
-  playerAudio: {fileID: 0}
+  unit: {fileID: 1845979837}
+  playerMovement: {fileID: 444509483965300185}
+  playerView: {fileID: 1735600535}
+  playerAudio: {fileID: 3636892320654380493}
 --- !u!114 &444509483965300185
 MonoBehaviour:
   m_ObjectHideFlags: 0

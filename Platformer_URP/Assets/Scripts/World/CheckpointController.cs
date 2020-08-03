@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class CheckpointController : MonoBehaviour
 {
-    public VectorValue playerSpawnPos;
+    private SaveManager _saveManager;
+    private LevelManager _lvlManager;
+
+    private void Awake()
+    {
+        _lvlManager = FindObjectOfType<LevelManager>();
+        _saveManager = FindObjectOfType<SaveManager>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            playerSpawnPos.runtimeValue = this.transform.position;
+            _lvlManager.SavePositionAtThisLevel();
+            _saveManager.SaveGame();
         }
 
     }

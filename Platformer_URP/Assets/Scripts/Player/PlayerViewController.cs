@@ -30,12 +30,12 @@ public class PlayerViewController : MonoBehaviour
 
     private void OnEnable()
     {
-        this.transform.position = spawnPos.runtimeValue;
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        this.transform.position = spawnPos.runtimeValue;
         anim.SetTrigger("Spawn");
     }
 
