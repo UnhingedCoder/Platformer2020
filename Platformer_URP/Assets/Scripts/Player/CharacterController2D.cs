@@ -26,7 +26,7 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] private ParticleSystem ps_poisonImpact;
     private ParticleSystem.EmissionModule footstepsModule;
 
-    const float k_GroundedRadius = 0.2f;
+    const float k_GroundedRadius = 0.33f;
     private bool m_jump; 
     private float m_jumpScale = 1f;
     private float m_hangCounter;
