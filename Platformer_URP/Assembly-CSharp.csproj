@@ -72,6 +72,7 @@
     <Compile Include="Assets\Scripts\Debug\DebugUIController.cs" />
     <Compile Include="Assets\Scripts\Debug\TestingEditor.cs" />
     <Compile Include="Assets\Scripts\Enemy\BossAreaController.cs" />
+    <Compile Include="Assets\Scripts\Enemy\BossAreaSpikeController.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss_Attack.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss_Run.cs" />
     <Compile Include="Assets\Scripts\Enemy\DetectionObstacleController.cs" />
@@ -84,7 +85,9 @@
     <Compile Include="Assets\Scripts\Enemy\ObstacleDetector.cs" />
     <Compile Include="Assets\Scripts\Enemy\Projectile.cs" />
     <Compile Include="Assets\Scripts\Enemy\ProjectileGenerator.cs" />
+    <Compile Include="Assets\Scripts\Enemy\RetractSpike.cs" />
     <Compile Include="Assets\Scripts\Enemy\RetractableSpikeController.cs" />
+    <Compile Include="Assets\Scripts\Enemy\RetractableSpikeVariantController.cs" />
     <Compile Include="Assets\Scripts\Game\CameraAdjuster.cs" />
     <Compile Include="Assets\Scripts\Game\CameraController.cs" />
     <Compile Include="Assets\Scripts\Game\DialogueSystem.cs" />

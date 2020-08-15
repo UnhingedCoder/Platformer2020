@@ -6,7 +6,9 @@ public enum BossStage
 {
     Lvl1,
     Lvl2,
-    Lvl3
+    Lvl3,
+    Lvl4,
+    Lvl5
 }
 public class EnemyBossController : MonoBehaviour
 {
@@ -17,19 +19,22 @@ public class EnemyBossController : MonoBehaviour
     public float attackRange = 10f;
     public GameObject playerTarget;
     private Vector3 playerDirection;
-
+    private int lastFacingDireciton = 1;
+    [SerializeField] ParticleSystem ps_poweringUp;
+    [SerializeField] ParticleSystem ps_Release;
     private EnemyPatrolController _enemyPatrol;
-    private EnemyProjectileController _enemyProjectile;
     private EnemyUnitController _enemyUnit;
 
-    public EnemyProjectileController EnemyProjectile { get => _enemyProjectile;}
+    public BossAreaSpikeController arenaSpikeController;
     public EnemyUnitController EnemyUnit { get => _enemyUnit;}
 
     private void Awake()
     {
         _enemyPatrol = this.GetComponent<EnemyPatrolController>();
-        _enemyProjectile = this.GetComponent<EnemyProjectileController>();
         _enemyUnit = this.GetComponent<EnemyUnitController>();
+        arenaSpikeController.ps_poweringUp = this.ps_poweringUp;
+        arenaSpikeController.ps_Release = this.ps_Release;
+
     }
 
     // Start is called before the first frame update
@@ -40,11 +45,23 @@ public class EnemyBossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_enemyUnit.invulnerable || _enemyPatrol.CanMove)
+        {
+            ps_poweringUp.gameObject.SetActive(false);
+            ps_Release.gameObject.SetActive(false);
+        }
+
         CheckBossStage();
+        DecideEpicenter();
     }
 
     public int DetectPlayerDirection()
     {
+        if (_enemyUnit.invulnerable)
+        {
+            return lastFacingDireciton;
+        }
+
         int targetIndex = 99;
         float shortestDist = 999f;
 
@@ -70,47 +87,41 @@ public class EnemyBossController : MonoBehaviour
                 playerDirection = (playerTarget.transform.position - this.transform.position).normalized;
 
                 if (playerDirection.x > 0)
-                    return 1;
+                {
+                    lastFacingDireciton = 1;
+                }
                 else
-                    return -1;
+                {
+                    lastFacingDireciton = - 1;
+                }
             }
+
         }
-        return 1;
+        return lastFacingDireciton;
     }
 
     void CheckBossStage()
     {
-        if (_enemyUnit.currentHealth >= _enemyUnit.totalHealth)
+        if (_enemyUnit.currentHealth == 5)
             stage = BossStage.Lvl1;
-        else if (_enemyUnit.currentHealth <= _enemyUnit.totalHealth / 1.5)
+        else if (_enemyUnit.currentHealth == 4)
             stage = BossStage.Lvl2;
-        else if (_enemyUnit.currentHealth < _enemyUnit.totalHealth / 2)
+        else if (_enemyUnit.currentHealth == 3)
             stage = BossStage.Lvl3;
-
-        AssignProjectiles();
+        else if (_enemyUnit.currentHealth == 2)
+            stage = BossStage.Lvl4;
+        else if (_enemyUnit.currentHealth == 1)
+            stage = BossStage.Lvl5;
     }
 
-    void AssignProjectiles()
+    void DecideEpicenter()
     {
-        switch (stage)
+        for (int i = 0; i < arenaSpikeController.spikeList.Count; i++)
         {
-            case BossStage.Lvl1:
-                {
-                    projectilesToShoot = (int)(_enemyProjectile.xMagnitude.Length * 0.6);
-                }
-                break;
-
-            case BossStage.Lvl2:
-                {
-                    projectilesToShoot = (int)(_enemyProjectile.xMagnitude.Length * 0.9);
-                }
-                break;
-
-            case BossStage.Lvl3:
-                {
-                    projectilesToShoot = (int)(_enemyProjectile.xMagnitude.Length);
-                }
-                break;
+            if (Vector2.Distance(this.transform.position, arenaSpikeController.spikeList[i].transform.position) <= 0.3f)
+            {
+                arenaSpikeController.epicenterSpikeIndex = i;
+            }
         }
     }
 }

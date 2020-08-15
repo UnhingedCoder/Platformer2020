@@ -13,6 +13,7 @@ public class Boss_Attack : StateMachineBehaviour
         enemyBoss = animator.GetComponent<EnemyBossController>();
         enemyPatrol = animator.GetComponent<EnemyPatrolController>();
         enemyPatrol.CanMove = false;
+        enemyBoss.arenaSpikeController.ResetSpikes();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -21,9 +22,15 @@ public class Boss_Attack : StateMachineBehaviour
         enemyPatrol.ChangeFacingDirection(enemyBoss.DetectPlayerDirection());
         if (Vector2.Distance(enemyBoss.playerTarget.transform.position, enemyBoss.transform.position) <= enemyBoss.attackRange)
         {
-            enemyBoss.EnemyProjectile.FireProjectiles(enemyBoss.projectilesToShoot);
+            enemyPatrol.CanMove = false;
+            enemyBoss.arenaSpikeController.InitiateSpikeWave(enemyBoss.DetectPlayerDirection());
         }
-        else
+        else if (enemyBoss.arenaSpikeController.poweringUp && Vector2.Distance(enemyBoss.playerTarget.transform.position, enemyBoss.transform.position) >= enemyBoss.attackRange)
+        {
+            enemyPatrol.CanMove = false;
+            enemyBoss.arenaSpikeController.InitiateSpikeWave(enemyBoss.DetectPlayerDirection());
+        }
+        else if (!enemyBoss.arenaSpikeController.poweringUp)
         {
             animator.SetTrigger("Chase");
         }
@@ -32,7 +39,7 @@ public class Boss_Attack : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateinfo, int layerindex)
     {
-        enemyBoss.EnemyProjectile.ResetFireTime();
+        enemyPatrol.CanMove = true;
         animator.ResetTrigger("Chase");
     }
 }

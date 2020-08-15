@@ -34,7 +34,10 @@ public class EnemyPatrolController : MonoBehaviour
     private void Update()
     {
         if (!canMove)
+        {
+            _rigidBody.velocity = new Vector2(dir * 0, _rigidBody.velocity.y);
             return;
+        }
 
 
         RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance, groundLayer);

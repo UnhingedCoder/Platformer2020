@@ -20,7 +20,7 @@ public class BossAreaController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            if (!boss.gameObject.activeInHierarchy)
+            if (!boss.gameObject.activeInHierarchy && boss.EnemyUnit.currentHealth > 0)
             {
                 entryDoor.SetTrigger("Close");
                 boss.gameObject.SetActive(true);

@@ -17,6 +17,7 @@ public class EnemyUnitController : Unit
 
     private void Awake()
     {
+        currentHealth = totalHealth;
         player = FindObjectOfType<PlayerController>();
         _objectPooler = GameObject.Find("ObjectPoolers/" + objectPoolerName).GetComponent<ObjectPooler>();
         anim = GetComponent<Animator>();
