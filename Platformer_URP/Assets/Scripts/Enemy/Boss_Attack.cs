@@ -13,7 +13,7 @@ public class Boss_Attack : StateMachineBehaviour
         enemyBoss = animator.GetComponent<EnemyBossController>();
         enemyPatrol = animator.GetComponent<EnemyPatrolController>();
         enemyPatrol.CanMove = false;
-        enemyBoss.arenaSpikeController.ResetSpikes();
+        enemyBoss.arenaSpikeController.ResetRetractableSpikes();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

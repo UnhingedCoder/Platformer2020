@@ -114,6 +114,7 @@ public class PlayerMovement : MonoBehaviour
     {
         controller.BreakJump();
         Time.timeScale = 1;
+        dir = 0;
         controller.DoubleJump(joystickDirection);
     }
 

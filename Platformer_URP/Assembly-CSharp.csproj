@@ -72,14 +72,16 @@
     <Compile Include="Assets\Scripts\Debug\DebugUIController.cs" />
     <Compile Include="Assets\Scripts\Debug\TestingEditor.cs" />
     <Compile Include="Assets\Scripts\Enemy\BossAreaController.cs" />
+    <Compile Include="Assets\Scripts\Enemy\BossAreaFallSpikeController.cs" />
     <Compile Include="Assets\Scripts\Enemy\BossAreaSpikeController.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss_Attack.cs" />
     <Compile Include="Assets\Scripts\Enemy\Boss_Run.cs" />
-    <Compile Include="Assets\Scripts\Enemy\DetectionObstacleController.cs" />
+    <Compile Include="Assets\Scripts\Enemy\DetectionFallSpikeController.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyBossController.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyPatrolController.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyProjectileController.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyUnitController.cs" />
+    <Compile Include="Assets\Scripts\Enemy\FallSpikeController.cs" />
     <Compile Include="Assets\Scripts\Enemy\FlameController.cs" />
     <Compile Include="Assets\Scripts\Enemy\KnockbackController.cs" />
     <Compile Include="Assets\Scripts\Enemy\ObstacleDetector.cs" />

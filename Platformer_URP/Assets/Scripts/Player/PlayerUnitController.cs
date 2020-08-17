@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class PlayerUnitController : Unit
 {
     public UnityEvent e_HealthChanged;
+    public UnityEvent e_HealthReduced;
     public UnityEvent e_HealRegained;
 
 
@@ -23,6 +24,7 @@ public class PlayerUnitController : Unit
         {
             currentHealth = 0;
         }
+        e_HealthReduced.Invoke();
         e_HealthChanged.Invoke();
     }
 

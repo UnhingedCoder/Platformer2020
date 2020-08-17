@@ -52,7 +52,11 @@ public class EnemyBossController : MonoBehaviour
         }
 
         CheckBossStage();
-        DecideEpicenter();
+
+        if (!_enemyUnit.invulnerable)
+        {
+            DecideEpicenter();
+        }
     }
 
     public int DetectPlayerDirection()
@@ -114,11 +118,11 @@ public class EnemyBossController : MonoBehaviour
             stage = BossStage.Lvl5;
     }
 
-    void DecideEpicenter()
+    public void DecideEpicenter()
     {
-        for (int i = 0; i < arenaSpikeController.spikeList.Count; i++)
+        for (int i = 0; i < arenaSpikeController.retractableSpikeList.Count; i++)
         {
-            if (Vector2.Distance(this.transform.position, arenaSpikeController.spikeList[i].transform.position) <= 0.3f)
+            if (Vector2.Distance(this.transform.position, arenaSpikeController.retractableSpikeList[i].transform.position) <= 0.3f)
             {
                 arenaSpikeController.epicenterSpikeIndex = i;
             }

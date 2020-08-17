@@ -10,6 +10,7 @@ public class EnemyUnitController : Unit
     private float invulnerabilityTime;
 
     public string objectPoolerName;
+    public BoxCollider2D headColl;
     public GameObject orb;
     private ObjectPooler _objectPooler;
     private Animator anim;
@@ -29,10 +30,12 @@ public class EnemyUnitController : Unit
         {
             invulnerabilityTime -= Time.deltaTime;
             invulnerable = true;
+            headColl.enabled = false;
         }
         else
         {
             invulnerable = false;
+            headColl.enabled = true;
             if (anim)
                 anim.SetTrigger("Normal");
         }

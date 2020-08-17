@@ -4,38 +4,50 @@ using UnityEngine;
 
 public class BossAreaSpikeController : MonoBehaviour
 {
-    public List<RetractableSpikeVariantController> spikeList = new List<RetractableSpikeVariantController>();
+    public List<RetractableSpikeVariantController> retractableSpikeList = new List<RetractableSpikeVariantController>();
+    public List<BossAreaFallSpikeController> fallSpikeList = new List<BossAreaFallSpikeController>();
     public int epicenterSpikeIndex = 0;
 
     public List<int> spikeLength = new List<int>();
-    public int maxSpikes;
     public bool ShouldReleaseSpikeWave;
-    public float delay;
+    public float retractDelay;
+    public float fallDelay;
 
-    public float startDelay;
-    public float startTime = 0f;
-    public float waitDelay;
+    public float PowerupDelay;
+    float startTime = 0f;
 
     public ParticleSystem ps_poweringUp;
     public ParticleSystem ps_Release;
-    [SerializeField] private bool waveDirRight;
-    [SerializeField]private int index;
+    [SerializeField] Vector2 fallSpikeRange;
+    bool waveDirRight;
+    int index;
+
+    int maxRetactableSpikes;
+    int maxFallSpikes;
 
     public bool poweringUp = false;
 
     bool canTriggerSpikeWave = true;
+    [SerializeField]bool isSpikesDropping = false;
 
     public EnemyBossController boss;
     private void OnValidate()
     {
-        //spikeList.Clear();
+        //retractableSpikeList.Clear();
         //int i = 0;
         //foreach (Transform child in this.transform)
         //{
         //    RetractableSpikeVariantController _spike = child.GetComponent<RetractableSpikeVariantController>();
         //    _spike.id = i;
-        //    spikeList.Add(_spike);
+        //    retractableSpikeList.Add(_spike);
         //    i++;
+        //}
+
+        //fallSpikeList.Clear();
+        //foreach (Transform child in this.transform)
+        //{
+        //    if(child.GetComponent<BossAreaFallSpikeController>() != null)
+        //        fallSpikeList.Add(child.GetComponent<BossAreaFallSpikeController>());
         //}
     }
 
@@ -43,45 +55,58 @@ public class BossAreaSpikeController : MonoBehaviour
     {
         if (ShouldReleaseSpikeWave)
         {
-            StartCoroutine(ReleaseSpikeWave());
+            StartCoroutine(ReleaseRetractableSpikeWave());
+            if (boss.stage > BossStage.Lvl2 && !isSpikesDropping)
+                StartCoroutine(ReleaseFallSpikeWave());
         }
     }
 
-    IEnumerator ReleaseSpikeWave()
+    IEnumerator ReleaseRetractableSpikeWave()
     {
         canTriggerSpikeWave = false;
-        int spikeLength = spikeList.Count;
+        int spikeLength = retractableSpikeList.Count;
         if (waveDirRight)
         {
-            spikeLength = epicenterSpikeIndex + maxSpikes;
-            if (spikeLength > spikeList.Count)
-                spikeLength = spikeList.Count;
+            spikeLength = epicenterSpikeIndex + maxRetactableSpikes;
+            if (spikeLength > retractableSpikeList.Count)
+                spikeLength = retractableSpikeList.Count;
 
             for (index = epicenterSpikeIndex; index < spikeLength; index++)
             {
-                Debug.Log("Going through " + index + " Spike");
-                spikeList[index].ShouldGrow = true;
-                yield return new WaitForSeconds(delay);
+                retractableSpikeList[index].ShouldGrow = true;
+                yield return new WaitForSeconds(retractDelay);
             }
         }
         else
         {
-            spikeLength = epicenterSpikeIndex - maxSpikes;
+            spikeLength = epicenterSpikeIndex - maxRetactableSpikes;
             if (spikeLength < 0)
                 spikeLength = 0;
 
             for (index = epicenterSpikeIndex; index >= spikeLength; index--)
             {
-                Debug.Log("Going through " + index + " Spike");
-                spikeList[index].ShouldGrow = true;
-                yield return new WaitForSeconds(delay);
+                retractableSpikeList[index].ShouldGrow = true;
+                yield return new WaitForSeconds(retractDelay);
             }
         }
 
-        ResetSpikes();
+        ResetRetractableSpikes();
     }
 
-    public void ResetSpikes()
+    IEnumerator ReleaseFallSpikeWave()
+    {
+        isSpikesDropping = true;
+        
+        for (int i = (int)fallSpikeRange.x; i < fallSpikeRange.y; i++)
+        {
+            fallSpikeList[i].DropTheSpike();
+            yield return new WaitForSeconds(fallDelay);
+        }
+
+        isSpikesDropping = false;
+    }
+
+    public void ResetRetractableSpikes()
     {
         startTime = 0;
         ps_poweringUp.gameObject.SetActive(false);
@@ -91,9 +116,17 @@ public class BossAreaSpikeController : MonoBehaviour
         ShouldReleaseSpikeWave = false;
     }
 
+    void ResetAllFallSpikes()
+    {
+        for (int i = 0; i < fallSpikeList.Count; i++)
+        {
+            fallSpikeList[i].Reset();
+        }
+    }
+
     public void InitiateSpikeWave(int facingDir)
     {
-        if (startTime <= startDelay)
+        if (startTime <= PowerupDelay)
         {
             poweringUp = true;
             ps_poweringUp.gameObject.SetActive(true);
@@ -104,11 +137,11 @@ public class BossAreaSpikeController : MonoBehaviour
             ps_poweringUp.gameObject.SetActive(false);
             if (canTriggerSpikeWave)
             {
-                SetMaxSpikeLength();
-                for (int i = 0; i < spikeList.Count; i++)
+                SetMaxRetractableSpikeLength();
+                for (int i = 0; i < retractableSpikeList.Count; i++)
                 {
-                    spikeList[i].upTime = 0;
-                    spikeList[i].retractingTime = 0;
+                    retractableSpikeList[i].upTime = 0;
+                    retractableSpikeList[i].retractingTime = 0;
                 }
 
                 if (facingDir > 0)
@@ -119,43 +152,102 @@ public class BossAreaSpikeController : MonoBehaviour
                 ps_Release.gameObject.SetActive(true);
                 ps_Release.Stop();
                 ps_Release.Play();
+                
+                SetMaxFallSpikeLength();
+                GetFallSpikeCluster();
 
-                ShouldReleaseSpikeWave = true;
                 canTriggerSpikeWave = false;
+                ShouldReleaseSpikeWave = true;
             }
         }
     }
 
-    void SetMaxSpikeLength()
+    void SetMaxRetractableSpikeLength()
     {
         switch (boss.stage)
         {
             case BossStage.Lvl1:
                 {
-                    maxSpikes = spikeLength[0];
+                    maxRetactableSpikes = spikeLength[0];
                 }
                 break;
             case BossStage.Lvl2:
                 {
-                    maxSpikes = spikeLength[1];
+                    maxRetactableSpikes = spikeLength[1];
                 }
                 break;
             case BossStage.Lvl3:
                 {
-                    maxSpikes = spikeLength[2];
+                    maxRetactableSpikes = spikeLength[2];
                 }
                 break;
             case BossStage.Lvl4:
                 {
-                    maxSpikes = spikeLength[3];
+                    maxRetactableSpikes = spikeLength[3];
                 }
                 break;
             case BossStage.Lvl5:
                 {
-                    maxSpikes = spikeList.Count;
+                    maxRetactableSpikes = retractableSpikeList.Count;
                 }
                 break;
         }
     }
 
+    void SetMaxFallSpikeLength()
+    {
+        switch (boss.stage)
+        {
+            case BossStage.Lvl1:
+            case BossStage.Lvl2:
+            case BossStage.Lvl3:
+                {
+                    maxFallSpikes = 1;
+                }
+                break;
+            case BossStage.Lvl4:
+                {
+                    maxFallSpikes = 2;
+                }
+                break;
+            case BossStage.Lvl5:
+                {
+                    maxFallSpikes = 3;
+                }
+                break;
+        }
+    }
+
+
+    int GetFallSpikeEpicenter()
+    {
+        int index = -1;
+
+        for (int i = 0; i < fallSpikeList.Count; i++)
+        {
+            if (fallSpikeList[i].isPlayerUnder)
+                index = i;
+
+        }
+
+        return index;
+    }
+
+    void GetFallSpikeCluster()
+    {
+        fallSpikeRange = Vector2.zero;
+
+        int fallSpikeEpicenter = GetFallSpikeEpicenter();
+        Debug.Log("Center: " + fallSpikeEpicenter);
+
+        int startIndex = fallSpikeEpicenter - maxFallSpikes;
+        if (startIndex < 0)
+            startIndex = 0;
+
+        int endIndex = fallSpikeEpicenter + maxFallSpikes;
+        if (endIndex > fallSpikeList.Count)
+            endIndex = fallSpikeList.Count;
+
+        fallSpikeRange = new Vector2(startIndex, endIndex);
+    }
 }

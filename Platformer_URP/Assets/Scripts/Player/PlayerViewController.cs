@@ -68,6 +68,11 @@ public class PlayerViewController : MonoBehaviour
         directionIndicator.rotation = Quaternion.Euler(new Vector3(0, 0, m_Angle));
     }
 
+    public void ShakeCameraOnDamaged()
+    {
+        player.camController.ShakeTheCamera();
+    }
+
     public void OnSpawn()
     {
         player.playerMovement.controller.CanMove = true;

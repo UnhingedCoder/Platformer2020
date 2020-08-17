@@ -133,7 +133,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 438838339
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 9143257064737654312, guid: 470922ecb41a10c43a522a7831360343,
     type: 3}
@@ -235,6 +235,7 @@ MonoBehaviour:
   invulnerable: 0
   invulnerabliltyDuration: 0
   objectPoolerName: OrbPooler
+  headColl: {fileID: 2883581264136499809}
   orb: {fileID: 0}
 --- !u!1 &8703516091004248460
 GameObject:

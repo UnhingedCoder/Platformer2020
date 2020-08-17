@@ -19419,7 +19419,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.591328}
+  m_Offset: {x: -0.0005386174, y: 0.57301414}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -19430,7 +19430,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4375, y: 0.62984395}
+  m_Size: {x: 0.49890542, y: 0.6664717}
   m_EdgeRadius: 0
 --- !u!58 &444509483965300166
 CircleCollider2D:
@@ -19445,9 +19445,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.25}
+  m_Offset: {x: 0, y: 0.249}
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.24676839
 --- !u!50 &444509483965300167
 Rigidbody2D:
   serializedVersion: 4
@@ -19464,7 +19464,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 5
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 027a0985a260bb94f810164eb9bc35ff, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -19568,6 +19568,7 @@ MonoBehaviour:
   playerMovement: {fileID: 444509483965300185}
   playerView: {fileID: 1735600535}
   playerAudio: {fileID: 3636892320654380493}
+  camController: {fileID: 0}
 --- !u!114 &444509483965300185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19607,6 +19608,20 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 798980079}
         m_MethodName: CheckHealth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  e_HealthReduced:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1735600535}
+        m_MethodName: ShakeCameraOnDamaged
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public PlayerMovement playerMovement;
     [HideInInspector] public PlayerViewController playerView;
     [HideInInspector] public PlayerAudioController playerAudio;
+    [HideInInspector] public CameraController camController;
 
     private void Awake()
     {
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         playerView = GetComponent<PlayerViewController>();
         playerAudio = GetComponent<PlayerAudioController>();
+        camController = FindObjectOfType<CameraController>();
     }
     // Start is called before the first frame update
     void Start()

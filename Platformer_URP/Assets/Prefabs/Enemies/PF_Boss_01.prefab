@@ -9732,7 +9732,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.021383516}
@@ -14640,7 +14640,7 @@ Transform:
   m_GameObject: {fileID: 524858967231406762}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12.06, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 524858966991693595}
   - {fileID: 524858968492038794}
@@ -14768,10 +14768,11 @@ MonoBehaviour:
   ps_HealUp: {fileID: 0}
   totalHealth: 5
   currentHealth: 0
-  knockbackForce: 4
+  knockbackForce: 2
   invulnerable: 0
   invulnerabliltyDuration: 1.5
   objectPoolerName: OrbPooler
+  headColl: {fileID: 524858966991693592}
   orb: {fileID: 0}
 --- !u!114 &524858967231406756
 MonoBehaviour:

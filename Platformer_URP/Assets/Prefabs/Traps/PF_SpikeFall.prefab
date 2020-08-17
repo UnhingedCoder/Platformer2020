@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14649db0698a49341ba3b847f8b690c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  damage: 1
   knockbackDuration: 0.1
   shouldDamageEnemies: 1
   destroySelf: 1
@@ -5035,3 +5035,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fallSpeed: 2
   obstacleRb: {fileID: 5122724731517662455}
+  initPos: {x: 0, y: 0}

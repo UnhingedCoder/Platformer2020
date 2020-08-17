@@ -11,12 +11,10 @@ public class KnockbackController : MonoBehaviour
     public Vector2 burstOffset;
     public ParticleSystem burstFX;
     private PlayerController player;
-    private CameraController _camController;
 
     private void Awake()
     {
         player = FindObjectOfType<PlayerController>();
-        _camController = FindObjectOfType<CameraController>();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -61,7 +59,6 @@ public class KnockbackController : MonoBehaviour
         if (!player.playerMovement.controller.Invulnerable && player.unit.currentHealth > 0)
         {
             player.unit.TakeDamage(damage);
-            _camController.ShakeTheCamera();
             player.playerMovement.Stop();
             player.playerMovement.controller.MakeInvulnerable();
             player.playerMovement.controller.KnockbackCount = knockbackDuration;

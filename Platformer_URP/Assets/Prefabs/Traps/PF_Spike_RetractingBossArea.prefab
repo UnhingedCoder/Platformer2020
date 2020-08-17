@@ -51,7 +51,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2bedb225ab14c39429f9c4c3565e87e1, type: 2}
+  - {fileID: 2100000, guid: 6f56fd60a30c0fd44987c0aff705079a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upDuration: 0.5
   upTime: 0
-  retractingDuration: 1
+  retractingDuration: 0.5
   retractingTime: 0
   spike: {fileID: 7783738969404171401}
   ShouldGrow: 0
